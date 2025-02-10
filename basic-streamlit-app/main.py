@@ -14,3 +14,12 @@ gender = st.selectbox("Select Gender:", ["All", "Male", "Female"])
 species_selected = st.multiselect("Select Species:", df["species"].unique(), default=df["species"].unique())
 
 
+
+filtered_df = df[
+    (df["sex"] == gender) &
+    (df["island"] == island) &
+    (df["species"]== species_selected) ]
+
+   
+st.write(filtered_df)
+
