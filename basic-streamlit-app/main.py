@@ -9,17 +9,25 @@ st.write("Below is the complete dataset loaded from a CSV File:")
 df = pd.read_csv("data/penguins.csv")
 st.dataframe(df)
 
-island = st.radio("Select an Island:", ["All"] + list(df["island"].unique()))
-gender = st.selectbox("Select Gender:", ["All", "Male", "Female"])
-species_selected = st.multiselect("Select Species:", df["species"].unique(), default=df["species"].unique())
+df["sex"] = df["sex"].fillna("")
+
+island = st.radio("Select an Island:",list(df["island"].unique()))
+gender = st.selectbox("Select Gender:", [ "male", "female"])
+year_range = st.slider(
+    "Select Year Range",
+    min_value=int(df["year"].min()), 
+    max_value=int(df["year"].max()), 
+    value=(int(df["year"].min()), int(df["year"].max())))
 
 
 
 filtered_df = df[
-    (df["sex"] == gender) &
     (df["island"] == island) &
-    (df["species"]== species_selected) ]
+    (df["sex"] == gender) &
+    (df["year"] >= year_range[0]) & (df["year"] <= year_range[1]) 
+    
+]
 
-   
 st.write(filtered_df)
+
 
