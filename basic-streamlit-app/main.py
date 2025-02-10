@@ -1,3 +1,16 @@
+'''
+Welcome! Before you start, follow these steps to run the app:
+
+1. Open a terminal.
+2. Navigate to the project directory where `main.py` is located:
+                 cd basic_streamlit_app
+3. Run the following command to start the app: 
+                streamlit run main.py
+
+
+Once the command runs, the app will open automatically in your web browser.
+
+'''
 
 import streamlit as st
 import pandas as pd
