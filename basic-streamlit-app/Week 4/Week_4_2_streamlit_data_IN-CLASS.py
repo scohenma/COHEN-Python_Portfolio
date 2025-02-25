@@ -1,6 +1,8 @@
 import streamlit as st
 
+
 import pandas as pd
+
 
 
 # ================================
@@ -17,6 +19,7 @@ df = pd.DataFrame({
     'Age': [25, 30, 35, 40],
     'City': ['New York', 'Los Angeles', 'Chicago', 'Houston']
 })
+
 
 
 # Displaying the table in Streamlit
