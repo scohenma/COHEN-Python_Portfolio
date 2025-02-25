@@ -1,1 +1,0 @@
-This app was created to help users explore the Palmer's Penguins dataset with interactive filters! These filters allow users to discover details about each penguin, from its species to its island habitat, and dive into the data with ease. 
