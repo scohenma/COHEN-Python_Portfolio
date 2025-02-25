@@ -6,6 +6,7 @@ This portfolio is designed to show my professional experiences and the projects 
 ## Repository Structure
 * **Weekly Assignments**: This subfolder includes assignments that I complete during class time two times a week.
 * **basic-streamlit-app**: This folder includes projects and assignments I have done using **Streamlit
-  * **main.py**: Inside this is a Streamlit app that allows usersto interact with various filters to analyze a specific penguin dataset. This is an ongoing project where I continue    to improve the app by refining the user experience and expanding its analytical capabilities.
+  * The **main.py** script inside this folder allows users to interact with various filters to analyze a specific penguin dataset. This is an ongoing project where I continue to        improve the app by refining the user experience and expanding its analytical capabilities.
+  * The **README.md** inside this folder provides a description and guidance into the Streamlit app. 
 
 
