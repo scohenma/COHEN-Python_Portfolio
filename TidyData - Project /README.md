@@ -55,7 +55,7 @@ The tidy-data principles that were followed were that:
 * On the other hand, other sports like Modern Pentathlon and Shooting had much fewer medals awarded, proving that some sports have fewer events or a more selective qualification process.
 
 This is evidence that not every sport has the same level of opportunity or competitiveness: 
-![Top 10 Sports with Most Medals awarded](/top_10_total.png)
+![Top 10 Sports with Most Medals awarded](top_10_total.png)
 
 ### Gender Representation in Olympic Sports
 This analysis also aimed to to explore medal distribution based on gender in the 2008 Olympics.
@@ -69,7 +69,7 @@ Sports with High Female Representation
 * This high representation is not due to equal participation across genders but rather the exclusion of men from these events.
 * Only a few mixed gender sports exceeded 50% female participation, suggesting that women’s dominance was mostly in gender-segregated events.
 
-![Top 10 Sports with High Female Representation](<img width="699" alt="Image" src="https://github.com/user-attachments/assets/678835f0-6906-4ed9-b7d5-397f83b33cc4" />)
+![Top 10 Sports with High Female Representation](top_10_high.png)
 
 
 
