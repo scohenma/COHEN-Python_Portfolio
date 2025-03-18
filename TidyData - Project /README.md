@@ -10,10 +10,13 @@ The tidy-data principles that were followed were that:
 
 ## Instructions to Run Notebook 
 1- Clone the Repository 
-  * Download the project from Github. The name of the repository is Tidy-Data Project. 
-2- Install Required Dependencies
-  * Once you are sure that Python is installed, import pandas, matplotlib, and seaborn libraries so that the         code can run properly 
+  * Download the project from Github. The name of the repository is Tidy-Data Project.
+
+2 -  Install Required Dependencies
+  * Once you are sure that Python is installed, import pandas, matplotlib, and seaborn libraries so that the         code can run properly
+    
 3- Open the Jupyter Notebook 
+
 4- Follow the step by step instructions and guidance in the markdown cells in the notebook 
   * Inside the notebook, there are comments about the code and the analysis.
 
@@ -66,7 +69,7 @@ Sports with High Female Representation
 * This high representation is not due to equal participation across genders but rather the exclusion of men from these events.
 * Only a few mixed gender sports exceeded 50% female participation, suggesting that women’s dominance was mostly in gender-segregated events.
 
-![Top 10 Sports with High Female Representation](/top_10_high.png)
+![Top 10 Sports with High Female Representation](<img width="699" alt="Image" src="https://github.com/user-attachments/assets/678835f0-6906-4ed9-b7d5-397f83b33cc4" />)
 
 
 
