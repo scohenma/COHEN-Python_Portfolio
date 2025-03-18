@@ -48,18 +48,18 @@ The tidy-data principles that were followed were that:
 
 
 ## References
-[Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
-[Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf)
+[Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf), 
+[Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf), 
 [Britannica](https://www.britannica.com/sports/boxing/Women-in-boxing)
 
 ## Insights and Analysis 
 ### Top 10 Sports with the Most & Least Medals Awarded
-* Athletics and Swimming awarded the highest number of medals, likely because they contain multiple event     categories.
-* Team sports like Basketball and Volleyball also awarded more medals, as multiple athletes receive medals per team.
+* Athletics and Rowing awarded the highest number of medals, likely because they contain multiple event     categories.
+* Team sports like Baseball and Volleyball also awarded more medals, as multiple athletes receive medals per team.
 * On the other hand, other sports like Modern Pentathlon and Shooting had much fewer medals awarded, proving that some sports have fewer events or a more selective qualification process.
 
-This is evidence that not every sport has the same level of opportunity or competitiveness: 
-![Top 10 Sports with Most Medals awarded](top_10_total.png)
+This is evidence that not every sport has the same level of opportunity or competitiveness, which is something no everyone considers. 
+![Bar Graph Displaying Top 10 Sports With Most Medals Awarded](top_10_total.png)
 
 ### Gender Representation in Olympic Sports
 This analysis also aimed to to explore medal distribution based on gender in the 2008 Olympics.
