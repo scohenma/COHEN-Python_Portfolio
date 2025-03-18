@@ -76,7 +76,7 @@ Sports with High Female Representation
 Sports with Low Female Representation
 * Apart from male-exclusive sports, many mixed-gender sports still had far less than 50% female representation, suggesting that even in mixed gender sports, there were fewer women winning Olympic medals. 
 
-![Top 10 Sports with High Female Representation](/top_10_low.png)
+![Top 10 Sports with High Female Representation](top_10_low.png)
 
 
 * This project was a great opportunity to not only learn more about the 2008 Olympics, but also put what I have learned in class into real life practice. I am looking forward to working on more projects to continue developing my skills! 
