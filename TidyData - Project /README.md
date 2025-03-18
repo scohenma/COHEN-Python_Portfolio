@@ -23,10 +23,14 @@ The tidy-data principles that were followed were that:
 
 ## Dataset Description 
 * This dataset includes information on Olympic medalists from the 2008 Summer Olympics. It has 1875 rows and 71 columns, including vital information:
-    ** Medalist Names - Name of the athletes.
-    ** Sport - The sport or event in which the athlete competed during the Olympics.
-    ** Gender - The gender of the athlete.
-    ** Medal - Type of medal won (Gold, Silver, Bronze).
+  
+    *Medalist Names - Name of the athletes.
+  
+    *Sport - The sport or event in which the athlete competed during the Olympics.
+  
+    *Gender - The gender of the athlete.
+  
+    *Medal - Type of medal won (Gold, Silver, Bronze).
   
 ### Pre-Processing Steps:
 1. Reshaping Data. 
