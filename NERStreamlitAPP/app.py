@@ -1,3 +1,15 @@
+'''
+Welcome! Before you start, follow these steps to run the app locally:
+
+1. Open a terminal.
+2. Navigate to the project directory where `app.py` is located:
+                 cd NERStreamlitApp
+3. Run the following command to start the app:
+                 streamlit run app.py
+
+The app will automatically open in your default web browser.
+'''
+
 # Setup Environment 
 import pandas as pd
 import streamlit as st
