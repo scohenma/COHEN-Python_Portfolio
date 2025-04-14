@@ -39,7 +39,7 @@ if st.button("Run EntityRuler"):
                 ruler = nlp.add_pipe("entity_ruler", before="ner")
             ruler.add_patterns(custom_patterns)
         else:
-     # If the NER component does not exist, add both the EntityRuler and the NER component.
+    # If the NER component does not exist, add both the EntityRuler and the NER component.
             ruler = nlp.add_pipe("entity_ruler")
             ruler.add_patterns(custom_patterns)
             ner = nlp.add_pipe("ner")
@@ -51,12 +51,10 @@ if st.button("Run EntityRuler"):
         st.subheader("Detected Entities:")
         for ent in doc.ents:
             st.write(f"{ent.text} ({ent.label_})")
+
+        # Highlight entities in the original text
+        st.subheader("Entity Highlights:")
+        html = displacy.render(doc, style="ent", jupyter=False)
+        st.markdown(html, unsafe_allow_html=True)
     else:
         st.warning("Please make sure to fill in all the fields above.")
-
-
-## Render the named entities
-st.subheader("Entity Highlights:")
-html = displacy.render(doc, style="ent", jupyter=False)
-st.markdown(html, unsafe_allow_html=True)
-
