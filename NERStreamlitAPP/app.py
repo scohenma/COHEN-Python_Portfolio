@@ -26,12 +26,15 @@ sample_options = [
 sample_choice = st.selectbox("Choose a sample or write your own:", sample_options)
 
 if sample_choice == "Sample 1: Stock market volatility":
+    st.caption("Try label: PERSON and pattern: Trump")
     text = "It’s been a week of uncertainty and volatility in the stock market as former President Trump introduces new tariff policies impacting global trade."
 
 elif sample_choice == "Sample 2: Katy Perry's space launch":
+    st.caption("Try label: PERSON and pattern: Katy Perry")
     text = "Katy Perry joined the crew of Blue Origin's latest space mission, which launched and landed successfully earlier this week."
 
 elif sample_choice == "Sample 3: Notre Dame in Forbes ranking":
+    st.caption("Try label: ORG and pattern: University of Notre Dame")
     text = "The University of Notre Dame was recently named America’s best large employer by Forbes, praised for its workplace culture and leadership."
 
 else:
