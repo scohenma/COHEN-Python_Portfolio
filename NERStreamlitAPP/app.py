@@ -56,5 +56,7 @@ if st.button("Run EntityRuler"):
 
 
 ## Render the named entities
-displacy.render(doc, style='ent', jupyter=True)
+st.subheader("Entity Highlights:")
+html = displacy.render(doc, style="ent", jupyter=False)
+st.markdown(html, unsafe_allow_html=True)
 
