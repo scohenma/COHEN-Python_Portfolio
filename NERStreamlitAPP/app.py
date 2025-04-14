@@ -13,8 +13,29 @@ st.title("Custom NER Interactive App")
 st.write("This app allows you to explore custom Named Entity Recognition using SpaCy by uploading and exploring your own text!")
 
 #User inputs
-st.subheader("Step 1 - Upload your custom text")
-text = st.text_area("Paste your text here:")
+# Step 1: Upload or paste your text
+st.subheader("Step 1: Upload or paste your text")
+
+sample_options = [
+    "Write your own",
+    "Sample 1: Stock market volatility",
+    "Sample 2: Katy Perry's space launch",
+    "Sample 3: Notre Dame in Forbes ranking"
+]
+
+sample_choice = st.selectbox("Choose a sample or write your own:", sample_options)
+
+if sample_choice == "Sample 1: Stock market volatility":
+    text = "It’s been a week of uncertainty and volatility in the stock market as former President Trump introduces new tariff policies impacting global trade."
+
+elif sample_choice == "Sample 2: Katy Perry's space launch":
+    text = "Katy Perry joined the crew of Blue Origin's latest space mission, which launched and landed successfully earlier this week."
+
+elif sample_choice == "Sample 3: Notre Dame in Forbes ranking":
+    text = "The University of Notre Dame was recently named America’s best large employer by Forbes, praised for its workplace culture and leadership."
+
+else:
+    text = st.text_area("Paste your text below:", height=200)
 
 st.subheader("Step 2 - Defining the custom entity")
 label = st.text_input("Entity Label:")
