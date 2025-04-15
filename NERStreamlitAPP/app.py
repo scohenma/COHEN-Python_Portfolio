@@ -33,6 +33,7 @@ st.subheader("Step 1: Upload or paste your text")
 # Upload .txt file
 uploaded_file = st.file_uploader("Or upload a .txt file", type=["txt"])
 
+
 # Dropdown options for user to select a sample or input their own text
 sample_options = [
     "Write your own",
@@ -48,7 +49,7 @@ sample_choice = st.selectbox("Choose a sample or write your own:", sample_option
 if uploaded_file is not None:
     text = uploaded_file.read().decode("utf-8")
     st.caption("File uploaded successfully!")
-    st.code(text, language='markdown')
+    st.code(text, type='txt')
 
 # 2. Use selected sample
 elif sample_choice == "Sample 1: Stock market volatility":
