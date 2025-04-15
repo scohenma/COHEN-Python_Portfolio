@@ -25,10 +25,23 @@ If you're running the app locally, make sure your `requirements.txt` file includ
 
 The app will automatically open in your default web browser.
 
-
+### Access the Live App:
+[Launch the App](https://scohenma-cohen-python-portfolio-nerstreamlitappapp-yfd209.streamlit.app/)
 - - - 
-## App Features
+### App Features
 * Pick a sample or write your own: Choose from a few current events or paste your own text to explore it. 
 * Create and type in your own entity label and pattern. The instruction here is to type in the kind of thing you want to detect (like PERSON or ORG) and the exact word or phrase to match.
-* Add your rule to spaCy’s NER system: Your custom rule gets added to the pipeline so it can be recognized in the text, and see how the app matches and higlights your entities in your original text. 
+* Add your rule to spaCy’s NER system: Your custom rule gets added to the pipeline so it can be recognized in the text, and see how the app matches and higlights your entities in your original text.
+
+### Example Patterns
+
+| Sample Text | Suggested Label | Suggested Pattern |
+|-------------|------------------|-------------------|
+| Stock Market Volatility | `PERSON` | `Trump` |
+| Katy Perry Launch | `PERSON` | `Katy Perry` |
+| Notre Dame Ranking | `ORG` | `University of Notre Dame` |
+
+### References
+* [The Basics of Spacy](https://spacy.pythonhumanities.com/01_01_install_and_containers.html)
+* [spaCy Linguistic Annotations](https://spacy.pythonhumanities.com/01_02_linguistic_annotations.html)
 
