@@ -49,7 +49,7 @@ sample_choice = st.selectbox("Choose a sample or write your own:", sample_option
 if uploaded_file is not None:
     text = uploaded_file.read().decode("utf-8")
     st.caption("File uploaded successfully!")
-    st.code(text, language='markdown')
+    st.code(text,language='markdown')
 
 # 2. Use selected sample
 elif sample_choice == "Sample 1: Stock market volatility":
