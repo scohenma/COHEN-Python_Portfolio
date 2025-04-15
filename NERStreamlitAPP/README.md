@@ -9,13 +9,19 @@ This unique NER app was created as part of a project in my "Elements of Computin
 
 - - - 
 
-## How to Run the App
+### Required Libraries
+- **[streamlit](https://streamlit.io/)** – for building the interactive app
+- **[spaCy](https://spacy.io/)** – for NLP and custom NER
+- **[en_core_web_sm](https://spacy.io/models/en#en_core_web_sm)** – spaCy’s English model used for tokenization and NER
+- **[pandas](https://pandas.pydata.org/)**
 
+## How to Run the App
+  
 ### Requirements
-If you're running the app locally, make sure your `requirements.txt` file includes the following lines:
+If you're running the app locally, make sure your `requirements.txt` file includes the following lines. If you're using spaCy 3.8.x (where x is any number), use: 
 - streamlit spacy==3.8.4 
 - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
-
+- 
 ### Instructions
 1. Open a terminal.
 2. Navigate to the project directory where `app.py` is located:
@@ -25,7 +31,7 @@ If you're running the app locally, make sure your `requirements.txt` file includ
 
 The app will automatically open in your default web browser.
 
-### Access the Live App:
+### Access the Live Deployed App:
 [Launch the App](https://scohenma-cohen-python-portfolio-nerstreamlitappapp-yfd209.streamlit.app/)
 - - - 
 ### App Features
