@@ -17,7 +17,14 @@ If you're running the app locally, make sure your `requirements.txt` file includ
 - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
 
 ### Instructions
-Open `app.py` and follow the step-by-step instructions written at the top of the file to run the app. 
+1. Open a terminal.
+2. Navigate to the project directory where `app.py` is located:
+                 cd NERStreamlitApp
+3. Run the following command to start the app:
+                 streamlit run app.py
+
+The app will automatically open in your default web browser.
+
 
 - - - 
 ## App Features
