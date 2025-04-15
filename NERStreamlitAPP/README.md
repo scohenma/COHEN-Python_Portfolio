@@ -21,7 +21,7 @@ This unique NER app was created as part of a project in my "Elements of Computin
 If you're running the app locally, make sure your `requirements.txt` file includes the following lines. If you're using spaCy 3.8.x (where x is any number), use: 
 - streamlit spacy==3.8.4 
 - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
-- 
+  
 ### Instructions
 1. Open a terminal.
 2. Navigate to the project directory where `app.py` is located:
