@@ -9,13 +9,19 @@ This unique NER app was created as part of a project in my "Elements of Computin
 
 - - - 
 
-## How to Run the App
+### Required Libraries
+- **[streamlit](https://streamlit.io/)** – for building the interactive app
+- **[spaCy](https://spacy.io/)** – for NLP and custom NER
+- **[en_core_web_sm](https://spacy.io/models/en#en_core_web_sm)** – spaCy’s English model used for tokenization and NER
+- **[pandas](https://pandas.pydata.org/)**
 
+## How to Run the App
+  
 ### Requirements
-If you're running the app locally, make sure your `requirements.txt` file includes the following lines:
+If you're running the app locally, make sure your `requirements.txt` file includes the following lines. If you're using spaCy 3.8.x (where x is any number), use: 
 - streamlit spacy==3.8.4 
 - https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
-
+  
 ### Instructions
 1. Open a terminal.
 2. Navigate to the project directory where `app.py` is located:
@@ -25,10 +31,23 @@ If you're running the app locally, make sure your `requirements.txt` file includ
 
 The app will automatically open in your default web browser.
 
-
+### Access the Live Deployed App:
+[Launch the App](https://scohenma-cohen-python-portfolio-nerstreamlitappapp-yfd209.streamlit.app/)
 - - - 
-## App Features
+### App Features
 * Pick a sample or write your own: Choose from a few current events or paste your own text to explore it. 
 * Create and type in your own entity label and pattern. The instruction here is to type in the kind of thing you want to detect (like PERSON or ORG) and the exact word or phrase to match.
-* Add your rule to spaCy’s NER system: Your custom rule gets added to the pipeline so it can be recognized in the text, and see how the app matches and higlights your entities in your original text. 
+* Add your rule to spaCy’s NER system: Your custom rule gets added to the pipeline so it can be recognized in the text, and see how the app matches and higlights your entities in your original text.
+
+### Example Patterns
+
+| Sample Text | Suggested Label | Suggested Pattern |
+|-------------|------------------|-------------------|
+| Stock Market Volatility | `PERSON` | `Trump` |
+| Katy Perry Launch | `PERSON` | `Katy Perry` |
+| Notre Dame Ranking | `ORG` | `University of Notre Dame` |
+
+### References
+* [The Basics of Spacy](https://spacy.pythonhumanities.com/01_01_install_and_containers.html)
+* [spaCy Linguistic Annotations](https://spacy.pythonhumanities.com/01_02_linguistic_annotations.html)
 
