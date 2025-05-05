@@ -3,6 +3,7 @@ import pandas as pd
 
 # Load your dataset
 df = pd.read_csv("World University Rankings 2023.csv")
+st.set_page_config(page_title="College Compass", layout="wide")
 
 # Clean numeric columns stored as strings
 for col in ["International Student", "OverAll Score", "Teaching Score", "Research Score", "No of student per staff"]:
@@ -17,7 +18,7 @@ st.write("🧪 Preview before filtering:")
 st.dataframe(df.head())
 
 # Set page title and intro text
-st.set_page_config(page_title="College Compass", layout="wide")
+
 st.title("College Compass")
 st.markdown("Welcome! Are you deciding where to go to college? This tool helps you explore and compare top universities based on your goals.")
 
