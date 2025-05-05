@@ -32,48 +32,39 @@ if user_choice == "I already know my options – help me compare them":
 elif user_choice == "I haven’t created a college list yet – help me generate one":
     st.subheader("Build Your College List")
 
-    # Q1: Location preference
-    location_pref = st.multiselect(
-        "Preferred locations (countries):",
-        options=df["Location"].unique()
-    )
+   # Option 2 UI
+st.subheader("🎯 Option 2: Help Me Build My College List")
 
-    # Q2: International student friendliness
-    wants_intl = st.selectbox(
-        "Are you an international student?",
-        ["Yes", "No"]
-    )
+with st.form("college_form"):
+    st.write("Fill out your preferences to discover universities that match your profile.")
 
-    # Q3: Desired minimum overall score
-    min_score = st.slider(
-        "Minimum overall score you're aiming for (0 to 100):",
-        min_value=0.0,
-        max_value=100.0,
-        value=85.0
-    )
+    is_international = st.radio("Are you an international student?", ("Yes", "No"))
+    location_pref = st.selectbox("Preferred location", options=["Any"] + sorted(df["Location"].unique()))
+    max_students_per_staff = st.slider("Max students per staff", 5.0, 30.0, 15.0)
+    min_score = st.slider("Minimum overall score", 0.0, 100.0, 60.0)
+    priority_metric = st.selectbox("What's more important to you?", ("Teaching Score", "Research Score"))
+    submitted = st.form_submit_button("Find universities")
 
-    # Filter based on answers
-    filtered_df = df.copy()
+if submitted:
+    results = df.copy()
 
-    if location_pref:
-        filtered_df = filtered_df[filtered_df["Location"].isin(location_pref)]
+    # Apply filters
+    if is_international == "Yes":
+        results = results[results["International Student"] > 20]
 
-    if wants_intl == "Yes":
-        # Strip % sign and convert to float
-        filtered_df["Intl_Student_Num"] = filtered_df["International Student"].str.replace('%', '').astype(float)
-        filtered_df = filtered_df[filtered_df["Intl_Student_Num"] >= 20.0]  # Filter by reasonable threshold
+    if location_pref != "Any":
+        results = results[results["Location"] == location_pref]
 
-    # Convert OverAll Score to float if not already
-    filtered_df["OverAll Score"] = pd.to_numeric(filtered_df["OverAll Score"], errors='coerce')
-    filtered_df = filtered_df[filtered_df["OverAll Score"] >= min_score]
+    results = results[
+        (results["No of student per staff"] <= max_students_per_staff) &
+        (results["OverAll Score"] >= min_score)
+    ]
 
-    # Sort and display
-    filtered_df = filtered_df.sort_values("OverAll Score", ascending=False)
+    results = results.sort_values(by=priority_metric, ascending=False)
 
-    if not filtered_df.empty:
-        st.success(f"{len(filtered_df)} universities match your preferences.")
-        st.dataframe(filtered_df[[
-            "Name of University", "Location", "International Student", "OverAll Score"
-        ]].reset_index(drop=True))
-    else:
-        st.warning("No universities match your criteria. Try adjusting your preferences.")
+    st.write(f"✅ Found {len(results)} universities that match your filters:")
+    st.dataframe(results[[
+        "Name of University", "Location", "OverAll Score",
+        "No of student per staff", "International Student",
+        "Teaching Score", "Research Score"
+    ]].reset_index(drop=True))
