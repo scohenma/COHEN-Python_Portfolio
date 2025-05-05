@@ -4,13 +4,11 @@ import pandas as pd
 # Load your dataset
 df = pd.read_csv("World University Rankings 2023.csv")
 
-# Clean "International Student" column
+# Clean "International Student" column safely
 df["International Student"] = (
     df["International Student"]
-    .str.replace('%', '', regex=False)
-    .replace('', pd.NA)  # Convert empty strings to actual NaN
-    .astype(float)        # Now safe to convert to float
-)
+    .str.replace('%', '', regex=False))
+df["International Student"] = pd.to_numeric(df["International Student"], errors='coerce')
 
 # Set page title and intro text
 st.set_page_config(page_title="College Compass", layout="wide")
