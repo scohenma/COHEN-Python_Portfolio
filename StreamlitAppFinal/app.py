@@ -9,6 +9,13 @@ for col in ["International Student", "OverAll Score", "Teaching Score", "Researc
     df[col] = df[col].replace('', pd.NA)
     df[col] = pd.to_numeric(df[col], errors='coerce')
 
+st.write("🔍 Preview of cleaned dataset:")
+st.dataframe(df.head())
+
+# Later, before filtering results:
+st.write("🧪 Preview before filtering:")
+st.dataframe(df.head())
+
 # Set page title and intro text
 st.set_page_config(page_title="College Compass", layout="wide")
 st.title("College Compass")
