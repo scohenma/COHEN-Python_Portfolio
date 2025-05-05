@@ -4,81 +4,74 @@ import pandas as pd
 # Load your dataset
 df = pd.read_csv("World University Rankings 2023.csv")
 
-# Preprocess for numeric fields
-df["No of student per staff"] = pd.to_numeric(df["No of student per staff"], errors="coerce")
-df["OverAll Score"] = pd.to_numeric(df["OverAll Score"], errors="coerce")
-df["Teaching Score"] = pd.to_numeric(df["Teaching Score"], errors="coerce")
-df["Research Score"] = pd.to_numeric(df["Research Score"], errors="coerce")
-df["International Student"] = df["International Student"].str.replace('%', '').astype(float)
+# Set page title and intro text
+st.set_page_config(page_title="College Compass", layout="wide")
+st.title("College Compass")
+st.markdown("Welcome! Are you deciding where to go to college? This tool helps you explore and compare top universities based on your goals.")
 
-# App title
-st.title("🎓 College Compass: Your Personalized University Advisor")
+# Step 1: Ask the user what kind of help they need
+user_choice = st.radio("What would you like to do?",
+                       ["I already know my options – help me compare them",
+                        "I haven’t created a college list yet – help me generate one"])
 
-# Ask user what they want to do
-option = st.radio(
-    "What would you like to do?",
-    ["🎯 Option 1: Compare Universities", "🎯 Option 2: Help Me Build My College List"])
-# --------------------------------
-# 🎯 Option 1: Compare Universities
-# --------------------------------
-if option == "🎯 Option 1: Compare Universities":
-    st.subheader("🔍 Compare Universities Side-by-Side")
+# If they choose to compare, show Option 1 logic
+if user_choice == "I already know my options – help me compare them":
+    # (This is where the comparison code goes — copy it right here)
+    st.subheader("Compare Universities")
+
+    universities_to_compare = st.multiselect(
+        "Select universities to compare:",
+        options=df["Name of University"].unique() )
+    if universities_to_compare:
+        comparison_df = df[df["Name of University"].isin(universities_to_compare)]
+        st.dataframe(comparison_df.set_index("Name of University"))
+    else:
+        st.info("Please select at least one university to compare.")
+
+elif user_choice == "I haven’t created a college list yet – help me generate one":
+    st.subheader("Build Your College List")
+
+   # Option 2 UI
+st.subheader("🎯 Option 2: Help Me Build My College List")
+
+with st.form("college_form"):
+    st.write("Fill out your preferences to discover universities that match your profile.")
+
+    # 1. International student radio
+    is_international = st.radio("Are you an international student?", ("Yes", "No"))
+
+    # 2. Clean Location column before sorting to prevent type error
+    cleaned_locations = df["Location"].dropna().astype(str).unique()
+    location_pref = st.selectbox("Preferred location", options=["Any"] + sorted(cleaned_locations))
+
+    # 3. Sliders for preferences
+    max_students_per_staff = st.slider("Max students per staff", 5.0, 30.0, 15.0)
+    min_score = st.slider("Minimum overall score", 0.0, 100.0, 60.0)
+
+    # 4. Priority metric
+    priority_metric = st.selectbox("What's more important to you?", ("Teaching Score", "Research Score"))
+
+    # 5. Submit button inside form
+    submitted = st.form_submit_button("Find universities")
+
+if submitted:
+    results = df.copy()
+    # Apply filters
+    if is_international == "Yes":
+        results = results[results["International Student"] > 20]
+
+    if location_pref != "Any":
+        results = results[results["Location"] == location_pref]
+
+    results = results[
+        (results["No of student per staff"] <= max_students_per_staff) &
+        (results["OverAll Score"] >= min_score) ]
     
-    universities = df["Name of University"].dropna().sort_values().unique()
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        uni1 = st.selectbox("Select first university:", universities, key="uni1")
-    with col2:
-        uni2 = st.selectbox("Select second university:", universities, key="uni2")
-    
-    if uni1 and uni2:
-        selected = df[df["Name of University"].isin([uni1, uni2])]
-        st.write("📊 Here's how they compare:")
-        st.dataframe(selected.set_index("Name of University").T)
+    results = results.sort_values(by=priority_metric, ascending=False)
 
-# -----------------------------------------------
-# 🎯 Option 2: Build a Custom College Recommendation
-# -----------------------------------------------
-elif option == "🎯 Option 2: Help Me Build My College List":
-    st.subheader("🎯 Help Me Build My College List")
-
-    with st.form("college_form"):
-        st.write("Fill out your preferences to discover universities that match your profile.")
-
-        # Question 1: International student
-        is_international = st.radio("Are you an international student?", ("Yes", "No"))
-
-        # Question 2: Location preference
-        locations = df["Location"].dropna().astype(str).unique()
-        location_pref = st.selectbox("Preferred location", options=["Any"] + sorted(locations))
-
-        # Question 3: Student/staff ratio
-        max_students_per_staff = st.slider("Max number of students per staff", 5.0, 30.0, 15.0)
-
-        # Question 4: Minimum Overall Score
-        min_score = st.slider("Minimum Overall Score", 0.0, 100.0, 60.0)
-
-        # Question 5: Priority metric
-        priority = st.selectbox("What's more important to you?", ["Teaching Score", "Research Score"])
-
-        # Submit button
-        submitted = st.form_submit_button("🎓 Find My Universities")
-
-    if submitted:
-        filtered = df.copy()
-
-        if location_pref != "Any":
-            filtered = filtered[filtered["Location"] == location_pref]
-        if is_international == "Yes":
-            filtered = filtered[filtered["International Student"] >= 30.0]
-
-        filtered = filtered[filtered["No of student per staff"] <= max_students_per_staff]
-        filtered = filtered[filtered["OverAll Score"] >= min_score]
-        filtered = filtered.sort_values(by=priority, ascending=False)
-
-        if not filtered.empty:
-            st.success(f"✅ Found {len(filtered)} universities matching your profile.")
-            st.dataframe(filtered.reset_index(drop=True))
-        else:
-            st.warning("No universities matched all your criteria. Try adjusting your filters.")
+    st.write(f"Found {len(results)} universities that match your filters:")
+    st.dataframe(results[[
+        "Name of University", "Location", "OverAll Score",
+        "No of student per staff", "International Student",
+        "Teaching Score", "Research Score"
+    ]].reset_index(drop=True))
