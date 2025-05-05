@@ -33,7 +33,7 @@ if option == "🎯 I already know my college options (Compare them)":
     st.subheader("🔍 Compare Your Top College Choices")
 
     # Get list of universities from the dataset
-    university_list = sorted(df["university_name"].unique())
+    university_list = sorted(df["Name of University"].unique())
 
     # Let user pick 2–3 universities
     selected_universities = st.multiselect(
@@ -45,14 +45,14 @@ if option == "🎯 I already know my college options (Compare them)":
 
     # Filter and display results
     if len(selected_universities) >= 2:
-        comparison_df = df[df["university_name"].isin(selected_universities)].copy()
+        comparison_df = df[df["Name of University"].isin(selected_universities)].copy()
 
         # Clean up columns for display
-        comparison_df = comparison_df[["rank", "university_name", "location", "score", "international_students"]]
+        comparison_df = comparison_df[["Location", "No of student", "No of student per staff", "Female:Male Ratio" "OverAll Score", "Teaching Score", "Research Score" "International Student", ]]
         comparison_df = comparison_df.sort_values("rank")
 
         st.write("### 📊 Side-by-Side Comparison")
-        st.dataframe(comparison_df.set_index("university_name"))
+        st.dataframe(comparison_df.set_index("Name of University"))
     
     elif len(selected_universities) == 1:
         st.info("Please select at least 2 universities to compare.")
