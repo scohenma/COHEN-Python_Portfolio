@@ -4,11 +4,10 @@ import pandas as pd
 # Load your dataset
 df = pd.read_csv("World University Rankings 2023.csv")
 
-# Clean "International Student" column safely
-df["International Student"] = (
-    df["International Student"]
-    .str.replace('%', '', regex=False))
-df["International Student"] = pd.to_numeric(df["International Student"], errors='coerce')
+# Clean numeric columns stored as strings
+for col in ["International Student", "OverAll Score", "Teaching Score", "Research Score", "No of student per staff"]:
+    df[col] = df[col].replace('', pd.NA)
+    df[col] = pd.to_numeric(df[col], errors='coerce')
 
 # Set page title and intro text
 st.set_page_config(page_title="College Compass", layout="wide")
