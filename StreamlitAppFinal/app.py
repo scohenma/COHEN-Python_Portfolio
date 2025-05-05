@@ -5,7 +5,10 @@ import pandas as pd
 df = pd.read_csv("World University Rankings 2023.csv")
 st.set_page_config(page_title="College Compass", layout="wide")
 
-# Clean numeric columns stored as strings
+# Special handling for International Student: remove % first
+df["International Student"] = df["International Student"].astype(str).str.replace('%', '', regex=False)
+
+# Now convert all relevant columns to numeric, handling missing values
 for col in ["International Student", "OverAll Score", "Teaching Score", "Research Score", "No of student per staff"]:
     df[col] = df[col].replace('', pd.NA)
     df[col] = pd.to_numeric(df[col], errors='coerce')
