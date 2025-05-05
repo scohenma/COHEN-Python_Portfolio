@@ -38,12 +38,23 @@ st.subheader("🎯 Option 2: Help Me Build My College List")
 with st.form("college_form"):
     st.write("Fill out your preferences to discover universities that match your profile.")
 
+    # 1. International student radio
     is_international = st.radio("Are you an international student?", ("Yes", "No"))
-    location_pref = st.selectbox("Preferred location", options=["Any"] + sorted(df["Location"].unique()))
+
+    # 2. Clean Location column before sorting to prevent type error
+    cleaned_locations = df["Location"].dropna().astype(str).unique()
+    location_pref = st.selectbox("Preferred location", options=["Any"] + sorted(cleaned_locations))
+
+    # 3. Sliders for preferences
     max_students_per_staff = st.slider("Max students per staff", 5.0, 30.0, 15.0)
     min_score = st.slider("Minimum overall score", 0.0, 100.0, 60.0)
+
+    # 4. Priority metric
     priority_metric = st.selectbox("What's more important to you?", ("Teaching Score", "Research Score"))
+
+    # 5. Submit button inside form
     submitted = st.form_submit_button("Find universities")
+
 
 if submitted:
     results = df.copy()
@@ -57,9 +68,8 @@ if submitted:
 
     results = results[
         (results["No of student per staff"] <= max_students_per_staff) &
-        (results["OverAll Score"] >= min_score)
-    ]
-
+        (results["OverAll Score"] >= min_score) ]
+    
     results = results.sort_values(by=priority_metric, ascending=False)
 
     st.write(f"✅ Found {len(results)} universities that match your filters:")
