@@ -4,8 +4,6 @@ import pandas as pd
 # Load your dataset
 df = pd.read_csv("World University Rankings 2023.csv")
 
-df["International Student"] = df["International Student"].str.replace('%', '').astype(float)
-
 # Set page title and intro text
 st.set_page_config(page_title="College Compass", layout="wide")
 st.title("College Compass")
