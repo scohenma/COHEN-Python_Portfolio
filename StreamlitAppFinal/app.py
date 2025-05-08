@@ -55,13 +55,13 @@ for uni in featured_universities:
     st.markdown(f"- {uni}")
 
 # -----------------------------------------------------------
-# 🧭 User Option: Decide or Compare
+# 🧭 User Option: Decide or Learn More
 # -----------------------------------------------------------
 
 st.markdown("### 🔍 What would you like to do?")
 mode = st.radio(
     "Choose one:",
-    ["Help Me Decide Where to Apply", "Compare My Top 3 Universities"]
+    ["Help Me Decide Where to Apply", "Learn More About Each One"]
 )
 
 # -----------------------------------------------------------
@@ -71,7 +71,52 @@ mode = st.radio(
 if mode == "Help Me Decide Where to Apply":
     st.markdown("## 🎯 Let’s Find Your Fit")
     st.write("Use the filters below to narrow down the schools that match your goals:")
+elif mode == "Learn More About Each":
+    st.markdown("## 🏛️ Discover Each University")
 
+    selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
+    uni_data = df[df["University"] == selected_uni].iloc[0]
+
+    st.markdown(f"### 🎓 {uni_data['University']}")
+
+    # Temporary placeholder image
+    st.image("https://via.placeholder.com/600x300.png?text=Campus+Photo", caption="Campus View", use_column_width=True)
+    st.image("https://via.placeholder.com/150.png?text=Mascot", caption="Mascot", width=150)
+
+    # Website links dictionary
+    university_links = {
+        "University of Notre Dame": "https://www.nd.edu",
+        "Georgetown University": "https://www.georgetown.edu",
+        "Boston College": "https://www.bc.edu",
+        "Villanova University": "https://www1.villanova.edu",
+        "University of Texas at Austin": "https://www.utexas.edu",
+        "Duke University": "https://www.duke.edu",
+        "Santa Clara University": "https://www.scu.edu",
+        "Saint Louis University": "https://www.slu.edu",
+        "University of Virginia": "https://www.virginia.edu",
+        "Syracuse University": "https://www.syracuse.edu"
+    }
+    st.markdown(f"🔗 [Visit Official Website]({university_links[selected_uni]})")
+
+    st.markdown("#### 📋 Application Information")
+    st.write("• Common App accepted  \n• Early Action: Nov 1  \n• Regular Decision: Jan 1")
+
+    # Fun facts dictionary
+    fun_facts = {
+        "University of Notre Dame": "The Golden Dome is covered in real gold leaf!",
+        "Georgetown University": "It’s the oldest Catholic and Jesuit institution in the U.S.",
+        "Boston College": "Their mascot is Baldwin the Eagle.",
+        "Villanova University": "It was founded in 1842 by the Order of Saint Augustine.",
+        "University of Texas at Austin": "Bevo, the longhorn steer, is their beloved mascot.",
+        "Duke University": "Students camp out for weeks to get basketball tickets (Krzyzewskiville).",
+        "Santa Clara University": "It has a working mission church on campus!",
+        "Saint Louis University": "Its mascot is a mysterious blue creature called the Billiken.",
+        "University of Virginia": "Founded by Thomas Jefferson himself.",
+        "Syracuse University": "Otto the Orange is one of the most unique mascots in college sports."
+    }
+
+    st.markdown("#### 🤩 Fun Fact")
+    st.info(fun_facts[selected_uni])
     col1, col2 = st.columns(2)
 
     with col1:
@@ -95,21 +140,6 @@ st.markdown("### 📊 Matching Universities")
 st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
 
 
-    # Optional Chart Display
-show_charts = st.checkbox("📈 Show Comparison Charts")
-
-if show_charts and not filtered_df.empty:
-    # Tuition Chart
-    st.markdown("### 💸 Tuition Comparison")
-    tuition_chart = filtered_df[["University", "Tuition"]].sort_values(by="Tuition", ascending=False)
-    st.bar_chart(tuition_chart.set_index("University"))
-
-
-    # Student-Faculty Ratio Chart
-    st.markdown("### 👩‍🏫 Student-Faculty Ratio")
-    ratio_chart = filtered_df[["University", "Student-Faculty Ratio"]].sort_values(by="Student-Faculty Ratio")
-    st.bar_chart(ratio_chart.set_index("University"))
-
 # -----------------------------------------------------------
-# 🆚 COMPARE TOP 3 SECTION (coming soon)
+# 🆚 LEARN MORE
 # -----------------------------------------------------------
