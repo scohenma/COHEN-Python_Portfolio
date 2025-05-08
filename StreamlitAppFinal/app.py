@@ -91,7 +91,7 @@ if mode == "Help Me Decide Where to Apply":
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
 
 
-elif mode == "Learn More About Each":
+elif mode == "Learn More About Each One":
     st.markdown("## 🏛️ Discover Each University")
 
     selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
