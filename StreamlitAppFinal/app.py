@@ -20,5 +20,3 @@ if selected_athletics:
 
 # Display filtered data
 st.dataframe(filtered_df)
-
-streamlit run app.py
