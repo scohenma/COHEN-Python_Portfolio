@@ -4,8 +4,8 @@ import pandas as pd
 
 # Load data
 df = pd.read_csv('universities_final_.csv')
-df.columns = df.columns.str.strip() 
-df.columns = df.columns.str.replace('\u200b', '')
+df.columns = df.columns.str.strip()
+st.write("📌 Column names:", df.columns.tolist())
 
 st.title("University Comparison Tool")
 
