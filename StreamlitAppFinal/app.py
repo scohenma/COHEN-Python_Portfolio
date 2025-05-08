@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 # Load data
-df = pd.read_csv('universities_final_2.csv')
+df = pd.read_csv('universities_2.csv')
 df.columns = df.columns.str.strip().str.replace('\u200b', '')  # removes hidden unicode
 st.write("📌 Column names:", df.columns.tolist())  # for debugging
 
