@@ -17,7 +17,7 @@ campus_images = {
     "Saint Louis University": "stlouis.jpg",
     "University of Virginia": "uvirginia.jpg",
     "Syracuse University": "syracuse.jpg"
-}
+    }
 
 # Clean column names
 df.columns = df.columns.str.strip()
