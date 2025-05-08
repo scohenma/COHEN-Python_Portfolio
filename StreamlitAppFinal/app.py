@@ -79,10 +79,6 @@ elif mode == "Learn More About Each":
 
     st.markdown(f"### 🎓 {uni_data['University']}")
 
-    # Temporary placeholder image
-    st.image("https://via.placeholder.com/600x300.png?text=Campus+Photo", caption="Campus View", use_column_width=True)
-    st.image("https://via.placeholder.com/150.png?text=Mascot", caption="Mascot", width=150)
-
     # Website links dictionary
     university_links = {
         "University of Notre Dame": "https://www.nd.edu",
@@ -119,13 +115,13 @@ elif mode == "Learn More About Each":
     st.info(fun_facts[selected_uni])
     col1, col2 = st.columns(2)
 
-    with col1:
-        type_filter = st.selectbox("Select University Type", ["All", "Public", "Private"])
-        tuition_max = st.slider("Max Tuition ($)", min_value=40000, max_value=70000, value=65000)
+with col1:
+    type_filter = st.selectbox("Select University Type", ["All", "Public", "Private"])
+    tuition_max = st.slider("Max Tuition ($)", min_value=40000, max_value=70000, value=65000)
 
-    with col2:
-        intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
-        ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
+with col2:
+    intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
+    ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
 
     # Apply filters
 filtered_df = df.copy()
