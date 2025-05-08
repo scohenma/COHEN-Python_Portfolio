@@ -45,14 +45,7 @@ mode = st.radio(
 if mode == "Help Me Decide Where to Apply":
     st.markdown("## 🎯 Let’s Find Your Fit")
     st.write("Use the filters below to narrow down the schools that match your goals:")
-
-    # Clean and convert 'International Students (%)'
-    df["International_clean"] = (
-    df["International Students (%)"]
-    .str.replace("%", "")
-    .replace("Not specified", pd.NA)
-    .astype(float)
-)
+    
     # Create filters (not in sidebar)
     col1, col2 = st.columns(2)
 
