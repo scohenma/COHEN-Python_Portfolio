@@ -89,14 +89,7 @@ if mode == "Help Me Decide Where to Apply":
     filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
     filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
 
-
-# Only show chart if there's data
-if not filtered_df.empty:
-    tuition_chart = filtered_df[["University", "Tuition"]].sort_values(by="Tuition", ascending=False)
-    st.bar_chart(tuition_chart.set_index("University"))
-else:
-    st.info("No universities match your filter criteria.")
-    # Show results
+ # Show results
 st.markdown("### 📊 Matching Universities")
 st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
 
