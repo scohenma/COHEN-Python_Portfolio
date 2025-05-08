@@ -64,13 +64,33 @@ mode = st.radio(
     ["Help Me Decide Where to Apply", "Learn More About Each One"]
 )
 
-# -----------------------------------------------------------
-# 🎯 HELP ME DECIDE SECTION
-# -----------------------------------------------------------
-
 if mode == "Help Me Decide Where to Apply":
     st.markdown("## 🎯 Let’s Find Your Fit")
     st.write("Use the filters below to narrow down the schools that match your goals:")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        type_filter = st.selectbox("Select University Type", ["All", "Public", "Private"])
+        tuition_max = st.slider("Max Tuition ($)", min_value=40000, max_value=70000, value=65000)
+
+    with col2:
+        intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
+        ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
+
+    # Apply filters
+    filtered_df = df.copy()
+    if type_filter != "All":
+        filtered_df = filtered_df[filtered_df["Type"] == type_filter]
+    filtered_df = filtered_df[filtered_df["Tuition_clean"] <= tuition_max]
+    filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
+    filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
+
+    # Show results
+    st.markdown("### 📊 Matching Universities")
+    st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
+
+
 elif mode == "Learn More About Each":
     st.markdown("## 🏛️ Discover Each University")
 
@@ -110,32 +130,5 @@ elif mode == "Learn More About Each":
         "University of Virginia": "Founded by Thomas Jefferson himself.",
         "Syracuse University": "Otto the Orange is one of the most unique mascots in college sports."
     }
-
-st.markdown("#### 🤩 Fun Fact")
-st.info(fun_facts[selected_uni])
-col1, col2 = st.columns(2)
-
-with col1:
-    type_filter = st.selectbox("Select University Type", ["All", "Public", "Private"])
-    tuition_max = st.slider("Max Tuition ($)", min_value=40000, max_value=70000, value=65000)
-
-with col2:
-    intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
-    ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
-
-    # Apply filters
-filtered_df = df.copy()
-if type_filter != "All":
-    filtered_df = filtered_df[filtered_df["Type"] == type_filter]
-    filtered_df = filtered_df[filtered_df["Tuition_clean"] <= tuition_max]
-    filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
-    filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
-
- # Show results
-st.markdown("### 📊 Matching Universities")
-st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
-
-
-# -----------------------------------------------------------
-# 🆚 LEARN MORE
-# -----------------------------------------------------------
+    st.markdown("#### 🤩 Fun Fact")
+    st.info(fun_facts[selected_uni])
