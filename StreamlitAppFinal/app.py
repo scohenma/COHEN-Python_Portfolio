@@ -7,30 +7,16 @@ df = pd.read_csv("universities_final_cleaned.csv")
 
 # Campus photos
 campus_images = {
-    "University of Notre Dame": "https://upload.wikimedia.org/wikipedia/commons/3/35/University_of_Notre_Dame_Dome.jpg",
-    "Georgetown University": "https://upload.wikimedia.org/wikipedia/commons/6/67/Georgetown_University_healy_hall.jpg",
-    "Boston College": "https://upload.wikimedia.org/wikipedia/commons/4/42/Boston_College_Gasson_Hall.jpg",
-    "Villanova University": "https://upload.wikimedia.org/wikipedia/commons/f/f6/St._Thomas_of_Villanova_Monastery.jpg",
-    "University of Texas at Austin": "https://upload.wikimedia.org/wikipedia/commons/e/e2/UT_Tower.jpg",
-    "Duke University": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Duke_Chapel.jpg",
-    "Santa Clara University": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Santa_Clara_University_Mission_Church.jpg",
-    "Saint Louis University": "https://upload.wikimedia.org/wikipedia/commons/f/f3/SLU_Clock_Tower.jpg",
-    "University of Virginia": "https://upload.wikimedia.org/wikipedia/commons/e/e5/UVA_Rotunda_Dome_Sunset.jpg",
-    "Syracuse University": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Syracuse_University_Hall_of_Languages.jpg"
-}
-
-# Mascot logos
-mascot_images = {
-    "University of Notre Dame": "https://upload.wikimedia.org/wikipedia/en/d/d6/Notre_Dame_Leprechaun_logo.svg",
-    "Georgetown University": "https://upload.wikimedia.org/wikipedia/en/e/ed/Georgetown_Hoyas_logo.svg",
-    "Boston College": "https://upload.wikimedia.org/wikipedia/en/7/75/Boston_College_Eagles_logo.svg",
-    "Villanova University": "https://upload.wikimedia.org/wikipedia/en/7/7b/Villanova_Wildcats_logo.svg",
-    "University of Texas at Austin": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Texas_Longhorns_logo.svg",
-    "Duke University": "https://upload.wikimedia.org/wikipedia/en/7/71/Duke_Blue_Devils_logo.svg",
-    "Santa Clara University": "https://upload.wikimedia.org/wikipedia/en/6/65/Santa_Clara_Broncos_logo.svg",
-    "Saint Louis University": "https://upload.wikimedia.org/wikipedia/en/f/f3/Saint_Louis_Billikens_logo.svg",
-    "University of Virginia": "https://upload.wikimedia.org/wikipedia/en/1/1a/Virginia_Cavaliers_logo.svg",
-    "Syracuse University": "https://upload.wikimedia.org/wikipedia/en/1/10/Syracuse_Orange_logo.svg"
+    "University of Notre Dame": "nd.jpg",
+    "Georgetown University": "georgetown.jpg",
+    "Boston College": "bostoncollege.jpg",
+    "Villanova University": "villanova.jpg",
+    "University of Texas at Austin": "utaustin.jpg",
+    "Duke University": "duke.jpg",
+    "Santa Clara University": "santaclara.jpg",
+    "Saint Louis University": "stlouis.jpg",
+    "University of Virginia": "uvirginia.jpg",
+    "Syracuse University": "syracuse.jpg"
 }
 
 # Clean column names
