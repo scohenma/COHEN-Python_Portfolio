@@ -111,9 +111,9 @@ elif mode == "Learn More About Each":
         "Syracuse University": "Otto the Orange is one of the most unique mascots in college sports."
     }
 
-    st.markdown("#### 🤩 Fun Fact")
-    st.info(fun_facts[selected_uni])
-    col1, col2 = st.columns(2)
+st.markdown("#### 🤩 Fun Fact")
+st.info(fun_facts[selected_uni])
+col1, col2 = st.columns(2)
 
 with col1:
     type_filter = st.selectbox("Select University Type", ["All", "Public", "Private"])
