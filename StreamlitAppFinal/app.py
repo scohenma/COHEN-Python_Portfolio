@@ -97,8 +97,9 @@ if not filtered_df.empty:
 else:
     st.info("No universities match your filter criteria.")
     # Show results
-    st.markdown("### 📊 Matching Universities")
-    st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
+st.markdown("### 📊 Matching Universities")
+st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
+
 
     # Optional Chart Display
 show_charts = st.checkbox("📈 Show Comparison Charts")
