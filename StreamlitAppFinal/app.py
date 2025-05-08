@@ -65,10 +65,9 @@ if type_filter != "All":
         filtered_df = filtered_df[
         filtered_df["Tuition"].str.replace(r"[^\d.]", "", regex=True).astype(float) <= tuition_max
     ]
-
-filtered_df = filtered_df[
+        filtered_df = filtered_df[
         filtered_df["Student-Faculty Ratio"].str.replace(":1", "").astype(float) <= ratio_filter
-    ]
+        ]
 
 st.markdown("### 📊 Matching Universities")
 st.dataframe(filtered_df)
