@@ -94,13 +94,13 @@ show_charts = st.checkbox("📈 Show Comparison Charts")
 
 if show_charts and not filtered_df.empty:
     # Tuition Chart
-    st.markdown("### 💸 Tuition Comparison")
+    st.markdown("### Undergrad Enrollment Comparison")
     tuition_chart = filtered_df[["University", "Undergrad Enrollment"]].sort_values(by="Undergrad Enrollment", ascending=False)
     st.bar_chart(tuition_chart.set_index("University"))
 
 
     # Student-Faculty Ratio Chart
-    st.markdown("### 👩‍🏫 Student-Faculty Ratio")
+    st.markdown("### Student-Faculty Ratio")
     ratio_chart = filtered_df[["University", "Student-Faculty Ratio"]].sort_values(by="Student-Faculty Ratio")
     st.bar_chart(ratio_chart.set_index("University"))
 
