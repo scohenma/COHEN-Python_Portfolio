@@ -97,13 +97,18 @@ st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "
 
     # Optional Chart Display
 show_charts = st.checkbox("📈 Show Comparison Charts")
-# Tuition Bar Chart using Matplotlib
-fig, ax = plt.subplots()
-ax.bar(tuition_chart["University"], tuition_chart["Tuition"], color="skyblue")
-ax.set_title("Tuition Comparison")
-ax.set_ylabel("Tuition ($)")
-ax.set_xticklabels(tuition_chart["University"], rotation=45, ha="right")
 
+if show_charts and not filtered_df.empty:
+    # Tuition Chart
+    st.markdown("### 💸 Tuition Comparison")
+    tuition_chart = filtered_df[["University", "Tuition"]].sort_values(by="Tuition", ascending=False)
+    st.bar_chart(tuition_chart.set_index("University"))
+
+
+    # Student-Faculty Ratio Chart
+    st.markdown("### 👩‍🏫 Student-Faculty Ratio")
+    ratio_chart = filtered_df[["University", "Student-Faculty Ratio"]].sort_values(by="Student-Faculty Ratio")
+    st.bar_chart(ratio_chart.set_index("University"))
 
 # -----------------------------------------------------------
 # 🆚 COMPARE TOP 3 SECTION (coming soon)
