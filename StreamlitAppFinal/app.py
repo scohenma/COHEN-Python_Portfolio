@@ -1,10 +1,26 @@
-
 import streamlit as st
 import pandas as pd
 
 # Load data
-df = pd.read_csv('final_university_copy.csv')
+df = pd.read_csv("universities_final_cleaned.csv")
 
+# Clean column names
+df.columns = df.columns.str.strip()
+
+# Ensure columns are correct
+df.columns = [
+    "University", "Rank", "Location", "Undergrad Enrollment", "Tuition",
+    "International Students (%)", "Student-Faculty Ratio", "Athletics", "Mission", "Type"
+]
+
+# Convert numerical fields
+df["International_clean"] = df["International Students (%)"].astype(float)
+df["Ratio_clean"] = df["Student-Faculty Ratio"].astype(float)
+df["Tuition_clean"] = df["Tuition"].astype(float)
+
+# -----------------------------------------------------------
+# 🎓 App Title and Introduction
+# -----------------------------------------------------------
 
 st.title("University Comparison Tool")
 
@@ -20,7 +36,7 @@ This app helps students explore universities that share that same heart: schools
 #### 🌟 Featured Universities
 """)
 
-# List the universities creatively
+# Creative listing of universities
 featured_universities = [
     "🏰 University of Notre Dame",
     "📚 Georgetown University",
@@ -37,16 +53,24 @@ featured_universities = [
 for uni in featured_universities:
     st.markdown(f"- {uni}")
 
+# -----------------------------------------------------------
+# 🧭 User Option: Decide or Compare
+# -----------------------------------------------------------
+
 st.markdown("### 🔍 What would you like to do?")
 mode = st.radio(
     "Choose one:",
     ["Help Me Decide Where to Apply", "Compare My Top 3 Universities"]
 )
+
+# -----------------------------------------------------------
+# 🎯 HELP ME DECIDE SECTION
+# -----------------------------------------------------------
+
 if mode == "Help Me Decide Where to Apply":
     st.markdown("## 🎯 Let’s Find Your Fit")
     st.write("Use the filters below to narrow down the schools that match your goals:")
-    
-    # Create filters (not in sidebar)
+
     col1, col2 = st.columns(2)
 
     with col1:
@@ -54,20 +78,24 @@ if mode == "Help Me Decide Where to Apply":
         tuition_max = st.slider("Max Tuition ($)", min_value=40000, max_value=70000, value=65000)
 
     with col2:
-        intl_filter = st.slider("Minimum % of International Students", 0.0, 15.0, 5.0)
+        intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
         ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
 
-
-    # Filter the data
-filtered_df = df.copy()
-if type_filter != "All":
+    # Apply filters
+    filtered_df = df.copy()
+    if type_filter != "All":
         filtered_df = filtered_df[filtered_df["Type"] == type_filter]
-        filtered_df = filtered_df[
-        filtered_df["Tuition"].str.replace(r"[^\d.]", "", regex=True).astype(float) <= tuition_max
-    ]
-        filtered_df = filtered_df[
-        filtered_df["Student-Faculty Ratio"].str.replace(":1", "").astype(float) <= ratio_filter
-        ]
+    filtered_df = filtered_df[filtered_df["Tuition_clean"] <= tuition_max]
+    filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
+    filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
 
-st.markdown("### 📊 Matching Universities")
-st.dataframe(filtered_df)
+    # Show results
+    st.markdown("### 📊 Matching Universities")
+    st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
+
+# -----------------------------------------------------------
+# 🆚 COMPARE TOP 3 SECTION (coming soon)
+# -----------------------------------------------------------
+
+elif mode == "Compare My Top 3 Universities":
+    st.markdown("🚧 This feature is coming soon! You’ll be able to choose three universities and compare them side-by-side.")
