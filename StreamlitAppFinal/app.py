@@ -3,16 +3,7 @@ import streamlit as st
 import pandas as pd
 
 # Load data
-df = pd.read_csv('universities_2.csv')
-
-# Manually define the correct columns just to be 100% sure
-df.columns = [
-    "University", "Rank", "Location", "Undergrad Enrollment", "Tuition",
-    "International Students (%)", "Student-Faculty Ratio", "Athletics", "Mission", "Type"
-]
-
-# Clean column names again just in case
-df.columns = df.columns.str.strip()
+df = pd.read_csv('universities.csv')
 
 
 st.title("University Comparison Tool")
