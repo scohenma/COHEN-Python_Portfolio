@@ -82,9 +82,9 @@ if mode == "Help Me Decide Where to Apply":
     filtered_df = df.copy()
     if type_filter != "All":
         filtered_df = filtered_df[filtered_df["Type"] == type_filter]
-    filtered_df = filtered_df[filtered_df["Tuition_clean"] <= tuition_max]
-    filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
-    filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
+        filtered_df = filtered_df[filtered_df["Tuition_clean"] <= tuition_max]
+        filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
+        filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
 
     # Show results
     st.markdown("### 📊 Matching Universities")
