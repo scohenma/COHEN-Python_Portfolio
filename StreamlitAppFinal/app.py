@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 # Load data
-df = pd.read_csv('universities.csv')
+df = pd.read_csv('universities_copy.csv')
 
 
 st.title("University Comparison Tool")
@@ -46,6 +46,13 @@ if mode == "Help Me Decide Where to Apply":
     st.markdown("## 🎯 Let’s Find Your Fit")
     st.write("Use the filters below to narrow down the schools that match your goals:")
 
+    # Clean and convert 'International Students (%)'
+    df["International_clean"] = (
+    df["International Students (%)"]
+    .str.replace("%", "")
+    .replace("Not specified", pd.NA)
+    .astype(float)
+)
     # Create filters (not in sidebar)
     col1, col2 = st.columns(2)
 
@@ -57,19 +64,20 @@ if mode == "Help Me Decide Where to Apply":
         intl_filter = st.slider("Minimum % of International Students", 0.0, 15.0, 5.0)
         ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
 
+
     # Filter the data
-    filtered_df = df.copy()
-    if type_filter != "All":
+filtered_df = df.copy()
+if type_filter != "All":
         filtered_df = filtered_df[filtered_df["Type"] == type_filter]
-    filtered_df = filtered_df[
+        filtered_df = filtered_df[
         filtered_df["Tuition"].str.replace(r"[^\d.]", "", regex=True).astype(float) <= tuition_max
     ]
-    filtered_df = filtered_df[
+filtered_df = filtered_df[
         filtered_df["International Students (%)"].str.replace("%", "").astype(float) >= intl_filter
     ]
-    filtered_df = filtered_df[
+filtered_df = filtered_df[
         filtered_df["Student-Faculty Ratio"].str.replace(":1", "").astype(float) <= ratio_filter
     ]
 
-    st.markdown("### 📊 Matching Universities")
-    st.dataframe(filtered_df)
+st.markdown("### 📊 Matching Universities")
+st.dataframe(filtered_df)

@@ -1,0 +1,12 @@
+universities
+University,Rank,Location,Undergrad Enrollment,Tuition,International Students (%),Student-Faculty Ratio,Athletics,Mission,Type
+University of Notre Dame,18,"Notre Dame, IN",8968,"$65,025.00",8%,9:1,Independent / ACC,Catholic research university founded by the Congregation of Holy Cross.,Private
+Georgetown University,22,"Washington, D.C.",7357,"$62,052.00",11%,11:1,Big East,Jesuit university committed to academic excellence and service to others.,Private
+Boston College,36,"Chestnut Hill, MA",9532,"$64,176.00",9%,11:1,ACC,Jesuit university dedicated to faith and reason.,Private
+Villanova University,49,"Villanova, PA",6700,"$61,868.00",5%,11:1,Big East,Catholic university emphasizing Augustinian values.,Private
+University of Texas at Austin,30,"Austin, TX",42444,"$40,996.00",9.6%,18:1,Big 12,Public research university with a commitment to academic excellence.,Public
+Duke University,6,"Durham, NC",6523,"$66,326.00",18.3%,6:1,ACC,Private research university emphasizing knowledge and faith.,Private
+Santa Clara University,55,"Santa Clara, CA",5438,"$58,587.00",4%,11:1,WCC,Jesuit university committed to social justice and innovation.,Private
+Saint Louis University,103,"St. Louis, MO",7217,"$48,824.00",8%,9:1,A-10,Catholic university focused on research and service.,Private
+University of Virginia,24,"Charlottesville, VA",17618,"$58,950.00",4.75%,14:1,ACC,"Public university founded by Thomas Jefferson, emphasizing liberal arts education.",Public
+Syracuse University,67,"Syracuse, NY",15421,"$60,135.00",9.14%,15:1,ACC,Private research university with a commitment to diversity and inclusion.,Private
