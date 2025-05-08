@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 
 # Load data
-df = pd.read_csv('final_universities_copy.csv')
+df = pd.read_csv('final_university_copy.csv')
 
 
 st.title("University Comparison Tool")
