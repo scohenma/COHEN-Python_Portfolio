@@ -1,6 +1,6 @@
-universities_final
-University,Rank,Location,Undergrad Enrollment,Tuition,International Students (%),Student-Faculty Ratio,Athletics,Vission,Type
-University of Notre Dame,18,"Notre Dame, IN",8968,"$65,025.00",8%,9:1,Independent / ACC,"Catholic research university founded by the Congregation of Holy Cross, dedicated to the pursuit and sharing of truth for its own sake",Private
+universities_final_clean
+University,Rank,Location,Undergrad Enrollment,Tuition,International Students (%),Student-Faculty Ratio,Athletics,Mission,Type
+University of Notre Dame,18,"Notre Dame, IN",8968,"$65,025.00",8%,9:1,Independent / ACC,Catholic research university founded by the Congregation of Holy Cross.,Private
 Georgetown University,22,"Washington, D.C.",7357,"$62,052.00",11%,11:1,Big East,Jesuit university committed to academic excellence and service to others.,Private
 Boston College,36,"Chestnut Hill, MA",9532,"$64,176.00",9%,11:1,ACC,Jesuit university dedicated to faith and reason.,Private
 Villanova University,49,"Villanova, PA",6700,"$61,868.00",5%,11:1,Big East,Catholic university emphasizing Augustinian values.,Private
