@@ -89,8 +89,6 @@ if mode == "Help Me Decide Where to Apply":
     filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
     filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
 
-# Tuition Comparison Bar Chart
-st.markdown("### 💸 Tuition Comparison")
 
 # Only show chart if there's data
 if not filtered_df.empty:
@@ -101,6 +99,20 @@ else:
     # Show results
     st.markdown("### 📊 Matching Universities")
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean"]))
+
+    # Optional Chart Display
+show_charts = st.checkbox("📈 Show Comparison Charts")
+
+if show_charts and not filtered_df.empty:
+    # Tuition Chart
+    st.markdown("### 💸 Tuition Comparison")
+    tuition_chart = filtered_df[["University", "Tuition"]].sort_values(by="Tuition", ascending=False)
+    st.bar_chart(tuition_chart.set_index("University"))
+
+    # Student-Faculty Ratio Chart
+    st.markdown("### 👩‍🏫 Student-Faculty Ratio")
+    ratio_chart = filtered_df[["University", "Student-Faculty Ratio"]].sort_values(by="Student-Faculty Ratio")
+    st.bar_chart(ratio_chart.set_index("University"))
 
 # -----------------------------------------------------------
 # 🆚 COMPARE TOP 3 SECTION (coming soon)
