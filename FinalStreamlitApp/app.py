@@ -4,21 +4,21 @@ import matplotlib.pyplot as plt
 
 
 # Loading data
-df = pd.read_csv("StreamlitAppFinal/universities_final_cleaned.csv")
+df = pd.read_csv("FinalStreamlitApp/universities_final_cleaned.csv")
 
 
 # Attaching Campus photos
 campus_images = {
-   "University of Notre Dame": "StreamlitAppFinal/nd.jpg",
-   "Georgetown University": "StreamlitAppFinal/georgetown.jpg",
-   "Boston College": "StreamlitAppFinal/bostoncollege.jpg",
-   "Villanova University": "StreamlitAppFinal/villanova.jpg",
-   "University of Texas at Austin": "StreamlitAppFinal/utaustin.jpg",
-   "Duke University": "StreamlitAppFinal/duke.jpg",
-   "Santa Clara University": "StreamlitAppFinal/santaclara.jpg",
-   "Saint Louis University": "StreamlitAppFinal/stlouis.jpg",
-   "University of Virginia": "StreamlitAppFinal/uvirginia.jpg",
-   "Syracuse University": "StreamlitAppFinal/syracuse.jpg"
+   "University of Notre Dame": "FinalStreamlitApp/nd.jpg",
+   "Georgetown University": "FinalStreamlitApp/georgetown.jpg",
+   "Boston College": "FinalStreamlitApp/bostoncollege.jpg",
+   "Villanova University": "FinalStreamlitApp/villanova.jpg",
+   "University of Texas at Austin": "FinalStreamlitApp/utaustin.jpg",
+   "Duke University": "FinalStreamlitApp/duke.jpg",
+   "Santa Clara University": "FinalStreamlitApp/santaclara.jpg",
+   "Saint Louis University": "FinalStreamlitApp/stlouis.jpg",
+   "University of Virginia": "FinalStreamlitApp/uvirginia.jpg",
+   "Syracuse University": "FinalStreamlitApp/syracuse.jpg"
    }
 
 
