@@ -1,4 +1,4 @@
-# University Explorer - Discovering Universities
+# University Explorer App
 
 ## Introduction
 * As a student at the University of Notre Dame, I was inspired to create this project after reflecting on the qualities that make this campus feel like home: **community**, **purpose**, **academic excellence**, and a **sense of mission**. Wanting to find schools that reflect similar values, I conducted my own research and compiled a dataset of 10 standout universities. I gathered data from many different of sources and cleaned the results to create a small but informational file. 
@@ -36,10 +36,11 @@ To run the app locally, make sure your requirements.txt file includes the necess
 # App Features
 ## Option 1: Help Me Decide Where to Apply
 Deciding which university to apply to can be one of the most important and stressful choices for a student. This part of the app allows users to customize key preferences that may strongly influence their decision-making process:
-Public vs. Private universities
-Tuition budget limits
-Minimum % of international students (for global exposure)
-Maximum student-faculty ratio (for class size and faculty access)
+- Public vs. Private universities
+- Tuition budget limits
+- Minimum % of international students (for global exposure)
+- Maximum student-faculty ratio (for class size and faculty access)
+  
 These parameters allow users to focus on what matters most to them. By setting filters, users receive a personalized list of university matches, updated in real-time. The filtering options are shown below: 
 
 ![ ](images/filters.png)
@@ -87,5 +88,5 @@ Based on their response, the app provides tips and action items appropriate for 
 [University of Virginia](https://www.virginia.edu/),  
 [Syracuse University](https://www.syracuse.edu/)
 
-# Final Thoughts
-University Explorer is more than just a tool, but an experience for any student. I hope it brings students one step closer to finding a university that feels like home.
+# Final Thoughts 
+I hope this University Explorer App brings students one step closer to finding a university that feels like home.
