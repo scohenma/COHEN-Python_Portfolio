@@ -97,6 +97,15 @@ if mode == "Help Me Decide Where to Apply":
         intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
         ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
 
+    st.markdown("### 📌 Summary of Current Filters")
+    st.info(
+        f"You’re viewing universities with the following filters:\n\n"
+        f"🎓 Type: **{type_filter}**  \n"
+        f"💸 Max Tuition: **${tuition_max:,}**  \n"
+        f"🌍 Min % Intl Students: **{intl_filter}%**  \n"
+        f"👩‍🏫 Max Student-Faculty Ratio: **{ratio_filter}**"
+        )
+
     # Apply filters
     filtered_df = df.copy()
     if type_filter != "All":
@@ -117,7 +126,7 @@ if mode == "Help Me Decide Where to Apply":
 
         with tab1:
             fig1, ax1 = plt.subplots()
-            ax1.hist(filtered_df["Tuition_clean"], bins=8, color="skyblue", edgecolor="black")
+            ax1.hist(filtered_df["Tuition_clean"], bins=8, color="lightblue", edgecolor="black")
             ax1.set_title("Tuition Distribution Among Matching Schools")
             ax1.set_xlabel("Tuition ($)")
             ax1.set_ylabel("Number of Universities")
@@ -126,7 +135,7 @@ if mode == "Help Me Decide Where to Apply":
         with tab2:
             type_counts = filtered_df["Type"].value_counts()
             fig2, ax2 = plt.subplots()
-            ax2.pie(type_counts, labels=type_counts.index, autopct="%1.1f%%", startangle=90, colors=["orange", "lightgreen"])
+            ax2.pie(type_counts, labels=type_counts.index, autopct="%1.1f%%", startangle=90, colors=["skyblue", "lightgreen"])
             ax2.axis("equal")
             st.pyplot(fig2)
 
