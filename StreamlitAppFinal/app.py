@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load data
+# Loading data
 df = pd.read_csv("universities_final_cleaned.csv")
 
-# Campus photos
+# Attaching Campus photos
 campus_images = {
     "University of Notre Dame": "nd.jpg",
     "Georgetown University": "georgetown.jpg",
@@ -19,16 +19,16 @@ campus_images = {
     "Syracuse University": "syracuse.jpg"
     }
 
-# Clean column names
+# Cleaning column names
 df.columns = df.columns.str.strip()
 
-# Ensure columns are correct
+# Ensuring columns are correct
 df.columns = [
     "University", "Rank", "Location", "Undergrad Enrollment", "Tuition",
     "International Students (%)", "Student-Faculty Ratio", "Athletics", "Mission", "Type"
 ]
 
-# Convert numerical fields
+# Converting numerical fields
 df["International_clean"] = df["International Students (%)"].astype(float)
 df["Ratio_clean"] = df["Student-Faculty Ratio"].astype(float)
 df["Tuition_clean"] = df["Tuition"].astype(float)
@@ -51,7 +51,7 @@ This app is designed to help students discover universities where excellence mee
 ### 🌟 Featured Universities
 """)
 
-# Creative listing of universities
+# Listing universities
 featured_universities = [
     "🏰 University of Notre Dame",
     "📚 Georgetown University",
@@ -144,7 +144,7 @@ if mode == "Help Me Decide Where to Apply":
         f"Max Student-Faculty Ratio: **{ratio_filter}**"
     )
 
-    # Apply filters
+    # Applying filters
     filtered_df = df.copy()
     if type_filter != "All":
         filtered_df = filtered_df[filtered_df["Type"] == type_filter]
@@ -152,7 +152,7 @@ if mode == "Help Me Decide Where to Apply":
     filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
     filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
 
-    # Show results
+    # Showing results
     st.markdown("#### 📊 Matching Universities")
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean", "Mission", "Athletics"]))
 
