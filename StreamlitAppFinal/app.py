@@ -126,12 +126,12 @@ elif mode == "Learn More About Each One":
     selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
     uni_data = df[df["University"] == selected_uni].iloc[0]
 
-    st.markdown("#### 🧭 Mission Statement")
+    st.markdown("#### 🧭 Basic Information")
     st.write(uni_data["Mission"])
 
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
 
-    st.markdown(f"### 🎓 {uni_data['University']}")
+    st.markdown(f"#### 🎓 {uni_data['University']}")
   
     # Website links dictionary
     university_links = {
