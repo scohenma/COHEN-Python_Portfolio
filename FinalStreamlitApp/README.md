@@ -1,25 +1,26 @@
-# University Explorer – Discover Mission-Driven Universities
+# University Explorer - Discovering Universities
+
 ## Introduction
 * As a student at the University of Notre Dame, I was inspired to create this project after reflecting on the qualities that make this campus feel like home: **community**, **purpose**, **academic excellence**, and a **sense of mission**. Wanting to find schools that reflect similar values, I conducted my own research and compiled a dataset of 10 standout universities. I gathered data from many different of sources and cleaned the results to create a small but informational file. 
 * For many students, choosing between such great options can feel overwhelming, and that is where this app comes in. Anyone can use it and take advantage of it, but it can be most helpful to highschool students in the process of applying to Universities. This University Explorer helps users visualize and compare schools across meaningful dimensions, and even offers personalized advice depending on their stage in the application journey.
 
 # Project Overview
 University Explorer is an interactive Streamlit app that helps prospective students:
-  * Filter and discover universities that match users’ values and priorities
-  * Dive deeper into profiles of 10 institutions
-  *Visualize key metrics like tuition, student-faculty ratio, and diversity
-  *Access college application advice based on unique profile
-  *The app supports two distinct use cases:
-  *Help Me Decide Where to Apply — for users looking for guidance in narrowing down their         options.
-  * Learn More About Each One — for users who want to compare and explore schools in greater       depth.
+- Filter and discover universities that match users’ values and priorities
+- Dive deeper into profiles of 10 institutions
+- Visualize key metrics like tuition, student-faculty ratio, and diversity
+- Access college application advice based on unique profile
+- The app supports two distinct use cases:
+- **Help Me Decide Where to Apply** — for users looking for guidance in narrowing down their     options.
+- **Learn More About Each One** — for users who want to compare and explore schools in greater   depth.
 
 # How to Run the App
 ## Requirements
 To run the app locally, make sure your requirements.txt file includes the necessary packages, generated using pipreqs. Common dependencies include:
 
-* streamlit==1.33.0
-* pandas
-* matplotlib
+- streamlit==1.33.0
+- pandas
+- matplotlib
 
 ## Instructions
 1) Open a terminal.
@@ -30,8 +31,7 @@ To run the app locally, make sure your requirements.txt file includes the necess
 5) The app will automatically launch in your default web browser.
 
    
-**Access the Live App
-Access the Live App!
+[Access the Live App](https://cohen-pythonportfolio-mwojbbcv7agaf6b7yumbhh.streamlit.app/)  
 
 # App Features
 ## Option 1: Help Me Decide Where to Apply
