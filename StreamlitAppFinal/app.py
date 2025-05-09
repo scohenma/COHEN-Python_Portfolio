@@ -126,7 +126,6 @@ elif mode == "Learn More About Each One":
     uni_data = df[df["University"] == selected_uni].iloc[0]
 
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
-    st.image(mascot_images[selected_uni], caption="🎭 Mascot", width=150)
 
     st.markdown(f"### 🎓 {uni_data['University']}")
   
