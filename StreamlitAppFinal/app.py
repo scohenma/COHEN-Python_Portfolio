@@ -42,9 +42,9 @@ st.title("University Comparison Tool")
 st.markdown("""
 ### 🎓 Welcome to the University Explorer App
 
-As a Notre Dame student, I’ve often heard people say: _"There’s just something about this place."_ That *something* — values, community, purpose, spirit — inspired me to build this tool.
+As a Notre Dame student, I’ve often heard people say: _"There’s just something about this place."_ That *something* — values, community, purpose, spirit — inspired me to build this tool. Doing some research, these 10 universities have simmilar characteristics to Notre Dame, and although the app only provides key information about the school, I really think they are amazing options. This is your sign to research more about them and add them to you application list!
 
-This app helps students explore universities that share that same heart: schools where excellence meets mission, and success is about more than just rankings.
+This app helps students explore universities that share that same heart: schools where excellence meets mission.
 
 ---
 
@@ -158,3 +158,13 @@ elif mode == "Learn More About Each One":
     }
     st.markdown("#### 🤩 Fun Fact")
     st.info(fun_facts[selected_uni])
+
+    if selected_uni == "University of Notre Dame":
+        st.markdown("#### 💬 Personal Note from the Creator")
+        st.success(
+        "I am a current junior here, and would not imagine being anywhere else. "
+        "This app is just a preview of the basic information — there is so much more to this place. "
+        "There’s truly no place like it.\n\n"
+        "**If you have any questions about the application process, please feel free to reach out.**\n\n"
+        "**GO IRISH! ☘️**"
+    )
