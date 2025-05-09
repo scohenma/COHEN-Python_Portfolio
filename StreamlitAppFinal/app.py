@@ -201,27 +201,6 @@ elif mode == "Learn More About Each One":
 
     st.markdown(f"#### 🎓 {uni_data['University']}")
 
-    # Majors by university
-    majors_by_university = {
-        "University of Notre Dame": ["Political Science", "Psychology", "English", "Finance", "Science/Pre-professional"],
-        "Boston College": ["Finance", "Economics", "Neuroscience", "Psychology", "Communication"],
-        "Georgetown University": ["Political Science and Government", "International Relations", "Finance", "Economics", "Psychology"],
-        "University of Virginia": ["Liberal Arts and Sciences", "Social Sciences", "Engineering", "Business/Commerce", "Computer and Info Systems"],
-        "Villanova University": ["Finance", "General Studies", "Registered Nursing", "Speech Communication and Rhetoric"],
-        "University of Texas at Austin": ["Engineering", "Business", "Biological and Biomedical Sciences", "Journalism/Communication", "Social Sciences"],
-        "Duke University": ["Computer and Information Science", "Social Sciences", "Engineering", "Biological Sciences", "Mathematics and Statistics"],
-        "Santa Clara University": ["Finance", "Speech Communication", "Psychology", "Math & Computer Science", "Marketing"],
-        "Saint Louis University": ["Nursing", "Lab Technician", "Kinesiology", "Biology", "Finance"],
-        "Syracuse University": ["Information Science", "Psychology", "Finance", "Economics", "Political Science"]
-    }
-
-    st.markdown("#### 📚 Want to know more?")
-    st.write("Explore the most popular majors offered by this university:")
-
-    if selected_uni in majors_by_university:
-        for major in majors_by_university[selected_uni]:
-            st.markdown(f"- {major}")
-
 
     # Website links dictionary
     university_links = {
@@ -253,6 +232,28 @@ elif mode == "Learn More About Each One":
 
     st.markdown("#### 🤩 Fun Facts")
     st.markdown(fun_facts[selected_uni].replace("\n", "\n\n"))
+
+    with st.expander("📚 Want to know more? Click here to explore popular majors"):
+        st.markdown("Here are the most popular majors offered at this university:")
+
+        majors_by_university = {
+            "University of Notre Dame": ["Political Science", "Psychology", "English", "Finance", "Science/Pre-professional"],
+            "Boston College": ["Finance", "Economics", "Neuroscience", "Psychology", "Communication"],
+            "Georgetown University": ["Political Science and Government", "International Relations", "Finance", "Economics", "Psychology"],
+            "University of Virginia": ["Liberal Arts and Sciences", "Social Sciences", "Engineering", "Business/Commerce", "Computer and Info Systems"],
+            "Villanova University": ["Finance", "General Studies", "Registered Nursing", "Speech Communication and Rhetoric"],
+            "University of Texas at Austin": ["Engineering", "Business", "Biological and Biomedical Sciences", "Communication & Journalism", "Social Sciences"],
+            "Duke University": ["Computer and Information Science", "Social Sciences", "Engineering", "Biological Sciences", "Mathematics and Statistics"],
+            "Santa Clara University": ["Finance", "Speech Communication", "Psychology", "Math & Computer Science", "Marketing"],
+            "Saint Louis University": ["Nursing", "Lab Technician", "Kinesiology", "Biology", "Finance"],
+            "Syracuse University": ["Information Science", "Psychology", "Finance", "Economics", "Political Science"]
+        }
+
+        if selected_uni in majors_by_university:
+            for major in majors_by_university[selected_uni]:
+                st.markdown(f"- {major}")
+        else:
+            st.write("No data available for this university.")
 
     if selected_uni == "University of Notre Dame":
         st.markdown("#### 💬 Personal Note from the Creator")
