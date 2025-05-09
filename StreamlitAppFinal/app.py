@@ -124,10 +124,10 @@ if mode == "Help Me Decide Where to Apply":
     st.markdown("#### 📌 Summary of Current Filters")
     st.info(
         f"You’re viewing universities with the following filters:\n\n"
-        f"🎓 Type: **{type_filter}**  \n"
-        f"💸 Max Tuition: **${tuition_max:,}**  \n"
-        f"🌍 Min % Intl Students: **{intl_filter}%**  \n"
-        f"👩‍🏫 Max Student-Faculty Ratio: **{ratio_filter}**"
+        f"Type: **{type_filter}**  \n"
+        f"Max Tuition: **${tuition_max:,}**  \n"
+        f"Min % Intl Students: **{intl_filter}%**  \n"
+        f"Max Student-Faculty Ratio: **{ratio_filter}**"
     )
 
     # Apply filters
@@ -160,7 +160,7 @@ if mode == "Help Me Decide Where to Apply":
         with tab2:
             type_counts = filtered_df["Type"].value_counts()
             fig2, ax2 = plt.subplots()
-            ax2.pie(type_counts, labels=type_counts.index, autopct="%1.1f%%", startangle=90, colors=["skyblue", "lightgreen"])
+            ax2.pie(type_counts, labels=type_counts.index, autopct="%1.1f%%", startangle=90, colors=["lightblue", "lightgreen"])
             ax2.axis("equal")
             st.pyplot(fig2)
 
@@ -202,22 +202,22 @@ elif mode == "Learn More About Each One":
         "Syracuse University": "https://www.syracuse.edu"
     }
     st.markdown(f"🔗 [Visit Official Website]({university_links[selected_uni]})")
-
-    # Fun facts dictionary
+    
     fun_facts = {
-        "University of Notre Dame": "The Golden Dome is covered in real gold leaf!",
-        "Georgetown University": "It’s the oldest Catholic and Jesuit institution in the U.S.",
-        "Boston College": "Their mascot is Baldwin the Eagle.",
-        "Villanova University": "It was founded in 1842 by the Order of Saint Augustine.",
-        "University of Texas at Austin": "Bevo, the longhorn steer, is their beloved mascot.",
-        "Duke University": "Students camp out for weeks to get basketball tickets (Krzyzewskiville).",
-        "Santa Clara University": "It has a working mission church on campus!",
-        "Saint Louis University": "Its mascot is a mysterious blue creature called the Billiken.",
-        "University of Virginia": "Founded by Thomas Jefferson himself.",
-        "Syracuse University": "Otto the Orange is one of the most unique mascots in college sports."
+        "University of Notre Dame": "- The Golden Dome is covered in real gold leaf.\n- Students avoid walking up the Main Building steps until graduation.\n- Helmets worn by the football team are painted with real gold dust.",
+        "Georgetown University": "- Students do the 'Healy Howl' after a Halloween Exorcist screening.\n- Jack the Bulldog mascot rides a golf cart around campus.\n- 'Hoya Saxa' is a cheer combining Greek and Latin meaning 'What Rocks!'",
+        "Boston College": "- Students line the Boston Marathon route every April.\n- The Red Bandanna Game honors 9/11 hero Welles Crowther.\n- Their mascot is Baldwin the Eagle.",
+        "Villanova University": "- The giant Oreo sculpture is a campus landmark.\n- Hosts the largest student-run Special Olympics in the world.\n- Holds an annual Day of Service that cancels all classes.",
+        "University of Texas at Austin": "- Seeing an albino squirrel before exams brings good luck.\n- Bevo the mascot got his name from a branding prank.\n- Big Bertha is UT’s massive 8-foot bass drum.",
+        "Duke University": "- Students camp for weeks in Krzyzewskiville to get basketball tickets.\n- Home to the world’s largest lemur research center.\n- Blue Devils are named after WWI French soldiers.",
+        "Santa Clara University": "- Built around a Spanish mission church from 1777.\n- First Catholic university in California to admit women.\n- During finals, students yell 'Wake up, Swig!' outside dorms.",
+        "Saint Louis University": "- First university west of the Mississippi River.\n- The Billiken mascot is based on a 1908 good-luck doll.\n- Completed the first legal forward pass in football history.",
+        "University of Virginia": "- Rotunda and Lawn are a UNESCO World Heritage Site.\n- Secret societies like the Seven Society leave cryptic symbols.\n- Streaking the Lawn is a student tradition before graduation.",
+        "Syracuse University": "- Only school with orange as its sole official color.\n- Otto the Orange is a smiling fruit mascot.\n- Number 44 is legendary in SU football and ZIP code."
     }
-    st.markdown("#### 🤩 Fun Fact")
-    st.info(fun_facts[selected_uni])
+    
+    st.markdown("#### 🤩 Fun Facts")
+    st.markdown(fun_facts[selected_uni].replace("\n", "\n\n"))
 
     if selected_uni == "University of Notre Dame":
         st.markdown("#### 💬 Personal Note from the Creator")
