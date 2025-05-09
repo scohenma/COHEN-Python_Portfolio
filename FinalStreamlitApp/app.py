@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 # Loading data
-df = pd.read_csv("FinalStreamlitApp/universities_final_cleaned.csv")
+df = pd.read_csv("universities_final_cleaned.csv")
 
 
 # Attaching Campus photos
