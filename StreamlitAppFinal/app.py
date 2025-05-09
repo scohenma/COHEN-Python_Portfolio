@@ -233,7 +233,7 @@ elif mode == "Learn More About Each One":
     st.markdown("#### 🤩 Fun Facts")
     st.markdown(fun_facts[selected_uni].replace("\n", "\n\n"))
 
-    with st.expander("📚 Want to know more? Click here to explore popular majors"):
+    with st.expander("##📚 Want to know more about academics?"):
         st.markdown("Here are the most popular majors offered at this university:")
 
         majors_by_university = {
@@ -254,6 +254,48 @@ elif mode == "Learn More About Each One":
                 st.markdown(f"- {major}")
         else:
             st.write("No data available for this university.")
+    with st.expander("📘 Application Tips & Tricks"):
+        st.markdown("Get tailored advice based on where you are in your high school journey:")
+
+        grade_level = st.selectbox(
+            "What grade are you in?",
+            ["Freshman or Sophomore", "Junior", "Senior"]
+        )
+
+        if grade_level == "Freshman or Sophomore":
+            st.markdown("""
+            - Focus on building a strong academic foundation — your GPA **starts now**.\n
+            - Get involved in a few extracurriculars you care about. Depth > quantity!\n
+            - Start exploring what majors or subjects excite you.\n
+            - Try to take **challenging courses** if possible — honors, AP, IB, etc.\n
+            - Consider starting SAT/ACT prep **early and casually** (apps, practice questions).\n
+            - Begin documenting awards, clubs, and activities in a spreadsheet.\n
+            - Build good relationships with teachers who may write recommendations later.\n
+            """)
+
+        elif grade_level == "Junior":
+            st.markdown("""
+            - **Start seriously preparing** for the SAT/ACT — use practice exams and review books.\n
+            - Research universities that fit your interests, values, and goals.\n
+            - Attend college fairs or virtual info sessions.\n
+            - Aim to take leadership roles in the activities you care about.\n
+            - Continue keeping your grades strong — junior year is often the most reviewed.\n
+            - Talk to upperclassmen about their college process and what they’d do differently.\n
+            - Visit local campuses or do virtual tours to get a feel for different environments.\n
+            """)
+
+        elif grade_level == "Senior":
+            st.markdown("""
+            - The summer before senior year: build your **college list** and organize deadlines.\n
+            - Create a new, professional email just for college apps to stay organized.\n
+            - Talk with your school counselor for personalized suggestions and advice.\n
+            - Start brainstorming and drafting your **personal statement/essays** early.\n
+            - Ask for **recommendation letters** before the school year starts — give your teachers time!\n
+            - Schedule any final SAT/ACT test dates as early as possible.\n
+            - Don’t be afraid to **email students, alumni, or admissions counselors** — they’re often eager to help!\n
+            - Visit campuses if you can — or explore them through online videos or Instagram reels.\n
+            - Most importantly: **Breathe**. You’re capable and not alone in this process.✨\n
+            """)
 
     if selected_uni == "University of Notre Dame":
         st.markdown("#### 💬 Personal Note from the Creator")
