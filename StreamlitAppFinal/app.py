@@ -104,7 +104,7 @@ if mode == "Help Me Decide Where to Apply":
     st.markdown("### 📊 Matching Universities")
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean", "Mission", "Athletics"]))
     # Optional Chart Display
-show_charts = st.checkbox("📈 Show Comparison Charts")
+    show_charts = st.checkbox("📈 Show Comparison Charts")
 
 if show_charts and not filtered_df.empty:
     st.markdown("### Undergrad Enrollment Comparison")
