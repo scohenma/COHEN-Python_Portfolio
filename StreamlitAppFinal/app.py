@@ -85,7 +85,7 @@ mode = st.radio(
 
 if mode == "Help Me Decide Where to Apply":
     st.markdown("#### 🎯 Let’s Find Your Fit")
-    st.write("Use the filters below to narrow down the schools that match your goals:")
+    st.write("Answer a few questions below to personalize your university matches:")
 
     col1, col2 = st.columns(2)
 
@@ -104,22 +104,38 @@ if mode == "Help Me Decide Where to Apply":
             help="Set the highest tuition you're willing to consider."
         )
 
-    with col2:
+    # Personalized filter questions
+    st.markdown("### 🧠 Personalize Your Priorities")
+
+    care_about_diversity = st.radio(
+        "Do you care about international diversity on campus?",
+        ["Yes", "No"],
+        help="We'll only filter for % of international students if this matters to you."
+    )
+
+    if care_about_diversity == "Yes":
         intl_filter = st.slider(
             "Minimum % of International Students",
-            min_value=0.0,
-            max_value=20.0,
-            value=5.0,
+            0.0, 20.0, 5.0,
             help="Only show schools with at least this percent of international students."
         )
+    else:
+        intl_filter = 0.0
 
+    care_about_ratio = st.radio(
+        "Do you care about small class sizes and more faculty interaction?",
+        ["Yes", "No"],
+        help="This controls the student-faculty ratio filter."
+    )
+
+    if care_about_ratio == "Yes":
         ratio_filter = st.slider(
             "Maximum Student-Faculty Ratio",
-            min_value=6.0,
-            max_value=20.0,
-            value=12.0,
-            help="Lower ratios typically mean smaller class sizes and more faculty access."
+            6.0, 20.0, 12.0,
+            help="Lower ratio means smaller classes and more personalized attention."
         )
+    else:
+        ratio_filter = 100.0
 
     st.markdown("#### 📌 Summary of Current Filters")
     st.info(
@@ -137,7 +153,6 @@ if mode == "Help Me Decide Where to Apply":
     filtered_df = filtered_df[filtered_df["Tuition_clean"] <= tuition_max]
     filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
     filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
-
 
     # Show results
     st.markdown("#### 📊 Matching Universities")
@@ -174,6 +189,7 @@ if mode == "Help Me Decide Where to Apply":
             st.pyplot(fig3)
     else:
         st.info("No results to visualize — adjust your filters above.")
+
 
 elif mode == "Learn More About Each One":
     st.markdown("## 🏛️ Discover Each University")
@@ -215,7 +231,7 @@ elif mode == "Learn More About Each One":
         "University of Virginia": "- Rotunda and Lawn are a UNESCO World Heritage Site.\n- Secret societies like the Seven Society leave cryptic symbols.\n- Streaking the Lawn is a student tradition before graduation.",
         "Syracuse University": "- Only school with orange as its sole official color.\n- Otto the Orange is a smiling fruit mascot.\n- Number 44 is legendary in SU football and ZIP code."
     }
-    
+
     st.markdown("#### 🤩 Fun Facts")
     st.markdown(fun_facts[selected_uni].replace("\n", "\n\n"))
 
