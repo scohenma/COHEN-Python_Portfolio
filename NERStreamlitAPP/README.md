@@ -1,6 +1,9 @@
 # Custom NER Streamlit App
+
 This Streamlit app allows users to explore **custom Named Entity Recognition (NER)** using [spaCy](https://spacy.io/). Users are able to enter their unique text, choose one of the sample texts given, and define custom entity labels and patterns using spaCy’s `EntityRuler`, and view color-coded entity highlights.
- 
+
+
+NER is a key concept in natural language processing (NLP), involving the identification and classification of entities such as people, organizations, locations, and more. This project demonstrates how custom rules can be integrated into spaCy’s NLP pipeline and offers users a hands-on way to understand how rule-based and statistical models interact in NER systems.
 - - - 
 ## Project Overview
 This unique NER app was created as part of a project in my "Elements of Computing II" class, with the purpose of exploring the skills we have learned, using Python, spaCy, and Streamlit
