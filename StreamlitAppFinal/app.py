@@ -77,34 +77,58 @@ for uni in featured_universities:
 import streamlit as st
 import matplotlib.pyplot as plt
 
-st.markdown("### 🔍 What would you like to do?")
+st.markdown("#### 🔍 What would you like to do?")
 mode = st.radio(
     "Choose one:",
     ["Help Me Decide Where to Apply", "Learn More About Each One"]
 )
 
 if mode == "Help Me Decide Where to Apply":
-    st.markdown("## 🎯 Let’s Find Your Fit")
+    st.markdown("#### 🎯 Let’s Find Your Fit")
     st.write("Use the filters below to narrow down the schools that match your goals:")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        type_filter = st.selectbox("Select University Type", ["All", "Public", "Private"])
-        tuition_max = st.slider("Max Tuition ($)", min_value=40000, max_value=70000, value=65000)
+        type_filter = st.selectbox(
+            "Select University Type", 
+            ["All", "Public", "Private"],
+            help="Choose whether you want to view public, private, or all universities."
+        )
+
+        tuition_max = st.slider(
+            "Max Tuition ($)",
+            min_value=40000,
+            max_value=70000,
+            value=65000,
+            help="Set the highest tuition you're willing to consider."
+        )
 
     with col2:
-        intl_filter = st.slider("Minimum % of International Students", 0.0, 20.0, 5.0)
-        ratio_filter = st.slider("Maximum Student-Faculty Ratio", 6.0, 20.0, 12.0)
+        intl_filter = st.slider(
+            "Minimum % of International Students",
+            min_value=0.0,
+            max_value=20.0,
+            value=5.0,
+            help="Only show schools with at least this percent of international students."
+        )
 
-    st.markdown("### 📌 Summary of Current Filters")
+        ratio_filter = st.slider(
+            "Maximum Student-Faculty Ratio",
+            min_value=6.0,
+            max_value=20.0,
+            value=12.0,
+            help="Lower ratios typically mean smaller class sizes and more faculty access."
+        )
+
+    st.markdown("#### 📌 Summary of Current Filters")
     st.info(
         f"You’re viewing universities with the following filters:\n\n"
         f"🎓 Type: **{type_filter}**  \n"
         f"💸 Max Tuition: **${tuition_max:,}**  \n"
         f"🌍 Min % Intl Students: **{intl_filter}%**  \n"
         f"👩‍🏫 Max Student-Faculty Ratio: **{ratio_filter}**"
-        )
+    )
 
     # Apply filters
     filtered_df = df.copy()
@@ -114,19 +138,20 @@ if mode == "Help Me Decide Where to Apply":
     filtered_df = filtered_df[filtered_df["International_clean"] >= intl_filter]
     filtered_df = filtered_df[filtered_df["Ratio_clean"] <= ratio_filter]
 
+
     # Show results
-    st.markdown("### 📊 Matching Universities")
+    st.markdown("#### 📊 Matching Universities")
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean", "Mission", "Athletics"]))
 
     # Visualizations in Tabs
-    st.markdown("### 📊 Explore Key Insights from Your Matches")
+    st.markdown("#### 📊 Explore Key Insights from Your Matches")
 
     if not filtered_df.empty:
         tab1, tab2, tab3 = st.tabs(["💸 Tuition Distribution", "🏛️ Public vs Private", "🌍 International Students"])
 
         with tab1:
             fig1, ax1 = plt.subplots()
-            ax1.hist(filtered_df["Tuition_clean"], bins=8, color="lightblue", edgecolor="black")
+            ax1.hist(filtered_df["Tuition_clean"], bins=8, color="lightblue")
             ax1.set_title("Tuition Distribution Among Matching Schools")
             ax1.set_xlabel("Tuition ($)")
             ax1.set_ylabel("Number of Universities")
@@ -156,7 +181,7 @@ elif mode == "Learn More About Each One":
     selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
     uni_data = df[df["University"] == selected_uni].iloc[0]
 
-    st.markdown("#### 🧭 Mission Statement")
+    st.markdown("#### 🧭 Basic Information")
     st.write(uni_data["Mission"])
 
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
