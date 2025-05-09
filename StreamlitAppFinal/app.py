@@ -42,9 +42,11 @@ st.title("University Comparison Tool")
 st.markdown("""
 ### 🎓 Welcome to the University Explorer App
 
-As a Notre Dame student, I’ve often heard people say: _"There’s just something about this place."_ That *something* — values, community, purpose, spirit — inspired me to build this tool. Doing some research, these 10 universities have simmilar characteristics to Notre Dame, and although the app only provides key information about the school, I really think they are amazing options. This is your sign to research more about them and add them to you application list!
+As a Notre Dame student, I’ve often heard people say, "There’s just something about this place." That something — a unique mix of values, community, purpose, and spirit — is what inspired me to build this tool.
 
-This app helps students explore universities that share that same heart: schools where excellence meets mission.
+Through my research, I found 10 universities that share many of those same qualities. While this app offers just a snapshot of what each school has to offer, I truly believe they’re exceptional options worth exploring. Consider this your sign to learn more about them — and maybe even add a few to your application list!
+
+This app is designed to help students discover universities where excellence meets mission — places that don’t just educate, but inspire.
 
 ---
 
@@ -123,6 +125,9 @@ elif mode == "Learn More About Each One":
 
     selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
     uni_data = df[df["University"] == selected_uni].iloc[0]
+
+    st.markdown("#### 🧭 Mission Statement")
+    st.write(uni_data["Mission"])
 
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
 
