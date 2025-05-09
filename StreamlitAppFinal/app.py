@@ -33,15 +33,13 @@ df["International_clean"] = df["International Students (%)"].astype(float)
 df["Ratio_clean"] = df["Student-Faculty Ratio"].astype(float)
 df["Tuition_clean"] = df["Tuition"].astype(float)
 
-# -----------------------------------------------------------
-# 🎓 App Title and Introduction
-# -----------------------------------------------------------
+# Introduction
 
 st.title("University Comparison Tool")
 
 st.markdown("""
 ### 🎓 Welcome to the University Explorer App
-
+            
 As a Notre Dame student, I’ve often heard people say, "There’s just something about this place." That something — a unique mix of values, community, purpose, and spirit — is what inspired me to build this tool.
 
 Through my research, I found 10 universities that share many of those same qualities. While this app offers just a snapshot of what each school has to offer, I truly believe they’re exceptional options worth exploring. Consider this your sign to learn more about them — and maybe even add a few to your application list!
@@ -50,7 +48,7 @@ This app is designed to help students discover universities where excellence mee
 
 ---
 
-#### 🌟 Featured Universities
+##### 🌟 Featured Universities
 """)
 
 # Creative listing of universities
@@ -70,10 +68,10 @@ featured_universities = [
 for uni in featured_universities:
     st.markdown(f"- {uni}")
 
-# -----------------------------------------------------------
-# 🧭 User Option: Decide or Learn More
-# -----------------------------------------------------------
 
+#User Option: Decide or Learn More
+
+#import 
 import streamlit as st
 import matplotlib.pyplot as plt
 
@@ -190,7 +188,6 @@ if mode == "Help Me Decide Where to Apply":
     else:
         st.info("No results to visualize — adjust your filters above.")
 
-
 elif mode == "Learn More About Each One":
     st.markdown("## 🏛️ Discover Each University")
 
@@ -203,6 +200,28 @@ elif mode == "Learn More About Each One":
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
 
     st.markdown(f"#### 🎓 {uni_data['University']}")
+
+    # Majors by university
+    majors_by_university = {
+        "University of Notre Dame": ["Political Science", "Psychology", "English", "Finance", "Science/Pre-professional"],
+        "Boston College": ["Finance", "Economics", "Neuroscience", "Psychology", "Communication"],
+        "Georgetown University": ["Political Science and Government", "International Relations", "Finance", "Economics", "Psychology"],
+        "University of Virginia": ["Liberal Arts and Sciences", "Social Sciences", "Engineering", "Business/Commerce", "Computer and Info Systems"],
+        "Villanova University": ["Finance", "General Studies", "Registered Nursing", "Speech Communication and Rhetoric"],
+        "University of Texas at Austin": ["Engineering", "Business", "Biological and Biomedical Sciences", "Journalism/Communication", "Social Sciences"],
+        "Duke University": ["Computer and Information Science", "Social Sciences", "Engineering", "Biological Sciences", "Mathematics and Statistics"],
+        "Santa Clara University": ["Finance", "Speech Communication", "Psychology", "Math & Computer Science", "Marketing"],
+        "Saint Louis University": ["Nursing", "Lab Technician", "Kinesiology", "Biology", "Finance"],
+        "Syracuse University": ["Information Science", "Psychology", "Finance", "Economics", "Political Science"]
+    }
+
+    st.markdown("#### 📚 Want to know more?")
+    st.write("Explore the most popular majors offered by this university:")
+
+    if selected_uni in majors_by_university:
+        for major in majors_by_university[selected_uni]:
+            st.markdown(f"- {major}")
+
 
     # Website links dictionary
     university_links = {
