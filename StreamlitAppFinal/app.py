@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
+
+
+print("Current Working Directory:", os.getcwd())
+print("Files in Directory:", os.listdir())
 
 # Loading data
 df = pd.read_csv("universities_final_cleaned.csv")
