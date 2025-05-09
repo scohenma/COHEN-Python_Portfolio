@@ -38,6 +38,7 @@ Minimum % of international students (for global exposure)
 Maximum student-faculty ratio (for class size and faculty access)
 These parameters allow users to focus on what matters most to them. By setting filters, users receive a personalized list of university matches, updated in real-time. The filtering options are shown below: 
 
+![ ](filters)
 
 Once preferences are set, the app provides matching results in a clean, easy-to-read table, and also generates visuals to help interpret the data:
 Histogram of tuition distribution
