@@ -48,7 +48,7 @@ This app is designed to help students discover universities where excellence mee
 
 ---
 
-##### 🌟 Featured Universities
+### 🌟 Featured Universities
 """)
 
 # Creative listing of universities
@@ -103,7 +103,7 @@ if mode == "Help Me Decide Where to Apply":
         )
 
     # Personalized filter questions
-    st.markdown("### 🧠 Personalize Your Priorities")
+    st.markdown("#### 🧠 Personalize Your Priorities")
 
     care_about_diversity = st.radio(
         "Do you care about international diversity on campus?",
@@ -135,7 +135,7 @@ if mode == "Help Me Decide Where to Apply":
     else:
         ratio_filter = 100.0
 
-    st.markdown("#### 📌 Summary of Current Filters")
+    st.markdown("#### Summary of Current Filters")
     st.info(
         f"You’re viewing universities with the following filters:\n\n"
         f"Type: **{type_filter}**  \n"
@@ -157,10 +157,10 @@ if mode == "Help Me Decide Where to Apply":
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean", "Mission", "Athletics"]))
 
     # Visualizations in Tabs
-    st.markdown("#### 📊 Explore Key Insights from Your Matches")
+    st.markdown("#### Explore Key Insights from Your Matches")
 
     if not filtered_df.empty:
-        tab1, tab2, tab3 = st.tabs(["💸 Tuition Distribution", "🏛️ Public vs Private", "🌍 International Students"])
+        tab1, tab2, tab3 = st.tabs(["Tuition Distribution", "Public vs Private", "International Students"])
 
         with tab1:
             fig1, ax1 = plt.subplots()
@@ -174,6 +174,7 @@ if mode == "Help Me Decide Where to Apply":
             type_counts = filtered_df["Type"].value_counts()
             fig2, ax2 = plt.subplots()
             ax2.pie(type_counts, labels=type_counts.index, autopct="%1.1f%%", startangle=90, colors=["lightblue", "lightgreen"])
+            ax2.set_title("Private Vs Public Schools")
             ax2.axis("equal")
             st.pyplot(fig2)
 
@@ -189,12 +190,12 @@ if mode == "Help Me Decide Where to Apply":
         st.info("No results to visualize — adjust your filters above.")
 
 elif mode == "Learn More About Each One":
-    st.markdown("## 🏛️ Discover Each University")
+    st.markdown("#### 🏛️ Discover Each University")
 
     selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
     uni_data = df[df["University"] == selected_uni].iloc[0]
 
-    st.markdown("#### 🧭 Basic Information")
+    st.markdown("#### Basic Information")
     st.write(uni_data["Mission"])
 
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
@@ -230,10 +231,11 @@ elif mode == "Learn More About Each One":
         "Syracuse University": "- Only school with orange as its sole official color.\n- Otto the Orange is a smiling fruit mascot.\n- Number 44 is legendary in SU football and ZIP code."
     }
 
-    st.markdown("#### 🤩 Fun Facts")
+    st.markdown("#### Fun Facts")
     st.markdown(fun_facts[selected_uni].replace("\n", "\n\n"))
 
-    with st.expander("##📚 Want to know more about academics?"):
+    st.markdown("#### Additional Information and Final Advice")
+    with st.expander("📚 Want to know more about academics?"):
         st.markdown("Here are the most popular majors offered at this university:")
 
         majors_by_university = {
