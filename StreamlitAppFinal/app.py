@@ -296,7 +296,7 @@ elif mode == "Learn More About Each One":
             - Schedule any final SAT/ACT test dates as early as possible.\n
             - Don’t be afraid to **email students, alumni, or admissions counselors** — they’re often eager to help!\n
             - Visit campuses if you can — or explore them through online videos or Instagram reels.\n
-            - Most importantly: **Breathe**. You’re capable and not alone in this process.✨\n
+            - Most importantly: **Be yourself in the application**. You will end up where you need to!.\n
             """)
 
     if selected_uni == "University of Notre Dame":
@@ -304,7 +304,7 @@ elif mode == "Learn More About Each One":
         st.success(
             "I am a current junior here, and would not imagine being anywhere else. "
             "This app is just a preview of the basic information — there is so much more to this place. "
-            "There’s truly no place like it.\n\n"
+            "There’s truly no place like it. I really encourage you to apply! \n\n"
             "**If you have any questions about the application process, please feel free to reach out.**\n\n"
             "**GO IRISH! ☘️**"
         )
