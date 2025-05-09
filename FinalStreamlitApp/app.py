@@ -9,16 +9,16 @@ df = pd.read_csv("FinalStreamlitApp/universities_final_cleaned.csv")
 
 # Attaching Campus photos
 campus_images = {
-   "University of Notre Dame": "nd.jpg",
-   "Georgetown University": "georgetown.jpg",
-   "Boston College": "bostoncollege.jpg",
-   "Villanova University": "villanova.jpg",
-   "University of Texas at Austin": "utaustin.jpg",
-   "Duke University": "duke.jpg",
-   "Santa Clara University": "santaclara.jpg",
-   "Saint Louis University": "stlouis.jpg",
-   "University of Virginia": "uvirginia.jpg",
-   "Syracuse University": "syracuse.jpg"
+   "University of Notre Dame": "FinalStreamlitApp/nd.jpg",
+   "Georgetown University": "FinalStreamlitApp/georgetown.jpg",
+   "Boston College": "FinalStreamlitApp/bostoncollege.jpg",
+   "Villanova University": "FinalStreamlitApp/villanova.jpg",
+   "University of Texas at Austin": "FinalStreamlitApp/utaustin.jpg",
+   "Duke University": "FinalStreamlitApp/duke.jpg",
+   "Santa Clara University": "FinalStreamlitApp/santaclara.jpg",
+   "Saint Louis University": "FinalStreamlitApp/stlouis.jpg",
+   "University of Virginia": "FinalStreamlitApp/virginia.jpg",
+   "Syracuse University": "FinalStreamlitApp/syracuse.jpg"
    }
 
 
