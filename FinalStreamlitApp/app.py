@@ -233,17 +233,26 @@ elif mode == "Learn More About Each One":
    uni_data = df[df["University"] == selected_uni].iloc[0]
 
 
-   st.markdown("#### Basic Information")
-   st.write(uni_data["Mission"])
+   mission_= {
+       "University of Notre Dame": "A private Catholic university in Indiana, famous for its Golden Dome, rich traditions, and strong football culture. Known for academic excellence and a deep sense of community.",
+       "Georgetown University": "Located in Washington, D.C., it’s the oldest Jesuit university in the U.S. Known for international relations, law, and politics, with alumni that include U.S. presidents and global leaders.'",
+       "Boston College": "A Jesuit university in Massachusetts with a strong liberal arts tradition. Offers a beautiful campus and a tight-knit community. Known for business, education, and Division I athletics.",
+       "Villanova University": "Founded by the Augustinian order in Pennsylvania, Villanova blends rigorous academics with strong values",
+       "University of Texas at Austin": "An iconic public university in Texas, UT Austin is a powerhouse in research, innovation, and sports. Home of the Longhorns and the famous tower overlooking the city skyline.",
+       "Duke University": "A prestigious private university in North Carolina, Duke excels in academics and athletics. Famous for its Gothic architecture, medical center, and basketball legacy.",
+       "Santa Clara University": "A Jesuit university in the heart of Santa Clara. Combines liberal arts and tech-oriented education with a mission rooted in social justice and innovation.",
+       "Saint Louis University": "A Catholic, Jesuit university located in Missouri. Known for its strong programs in health sciences, law, service learning, and research.",
+       "University of Virginia": "Founded by Thomas Jefferson in Charlottesville, UVA is steeped in history. Academically elite, with a strong community.",
+       "Syracuse University": "A private research university in New York with a vibrant student life and strong academic programs."
+   }
 
+   st.markdown("#### About")
+   st.markdown(mission_[selected_uni].replace("\n", "\n\n"))
 
    st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
 
 
    st.markdown(f"#### 🎓 {uni_data['University']}")
-
-
-
 
    # Website links dictionary
    university_links = {
