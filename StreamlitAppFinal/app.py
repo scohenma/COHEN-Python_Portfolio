@@ -108,8 +108,8 @@ if mode == "Help Me Decide Where to Apply":
 
     if show_charts and not filtered_df.empty:
         st.markdown("### Undergrad Enrollment Comparison")
-        tuition_chart = filtered_df[["University", "Undergrad Enrollment"]].sort_values(by="Undergrad Enrollment", ascending=False)
-        st.bar_chart(tuition_chart.set_index("University"))
+    tuition_chart = filtered_df[["University", "Undergrad Enrollment"]].sort_values(by="Undergrad Enrollment", ascending=False)
+    st.bar_chart(tuition_chart.set_index("University"))
 
 
     # Student-Faculty Ratio Chart
