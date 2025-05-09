@@ -74,6 +74,9 @@ for uni in featured_universities:
 # 🧭 User Option: Decide or Learn More
 # -----------------------------------------------------------
 
+import streamlit as st
+import matplotlib.pyplot as plt
+
 st.markdown("### 🔍 What would you like to do?")
 mode = st.radio(
     "Choose one:",
@@ -105,20 +108,38 @@ if mode == "Help Me Decide Where to Apply":
     # Show results
     st.markdown("### 📊 Matching Universities")
     st.dataframe(filtered_df.drop(columns=["Tuition_clean", "International_clean", "Ratio_clean", "Mission", "Athletics"]))
-    
-    #Optional Comparison Chart
-    show_charts = st.checkbox("📈 Show Comparison Charts")
 
+    # Visualizations in Tabs
+    st.markdown("### 📊 Explore Key Insights from Your Matches")
 
-    if show_charts and not filtered_df.empty:
-        st.markdown("### Undergrad Enrollment Comparison")
-        tuition_chart = filtered_df[["University", "Undergrad Enrollment"]].sort_values(by="Undergrad Enrollment", ascending=False)
-        st.bar_chart(tuition_chart.set_index("University"))
+    if not filtered_df.empty:
+        tab1, tab2, tab3 = st.tabs(["💸 Tuition Distribution", "🏛️ Public vs Private", "🌍 International Students"])
 
-        st.markdown("### Student-Faculty Ratio")
-        ratio_chart = filtered_df[["University", "Student-Faculty Ratio"]].sort_values(by="Student-Faculty Ratio")
-        st.bar_chart(ratio_chart.set_index("University"))
+        with tab1:
+            fig1, ax1 = plt.subplots()
+            ax1.hist(filtered_df["Tuition_clean"], bins=8, color="skyblue", edgecolor="black")
+            ax1.set_title("Tuition Distribution Among Matching Schools")
+            ax1.set_xlabel("Tuition ($)")
+            ax1.set_ylabel("Number of Universities")
+            st.pyplot(fig1)
 
+        with tab2:
+            type_counts = filtered_df["Type"].value_counts()
+            fig2, ax2 = plt.subplots()
+            ax2.pie(type_counts, labels=type_counts.index, autopct="%1.1f%%", startangle=90, colors=["orange", "lightgreen"])
+            ax2.axis("equal")
+            st.pyplot(fig2)
+
+        with tab3:
+            intl_sorted = filtered_df.sort_values(by="International_clean", ascending=False)
+            fig3, ax3 = plt.subplots()
+            ax3.bar(intl_sorted["University"], intl_sorted["International_clean"], color="lightblue")
+            ax3.set_xticklabels(intl_sorted["University"], rotation=45, ha="right")
+            ax3.set_ylabel("% of International Students")
+            ax3.set_title("Global Diversity Across Matching Universities")
+            st.pyplot(fig3)
+    else:
+        st.info("No results to visualize — adjust your filters above.")
 
 elif mode == "Learn More About Each One":
     st.markdown("## 🏛️ Discover Each University")
@@ -126,13 +147,13 @@ elif mode == "Learn More About Each One":
     selected_uni = st.selectbox("Choose a university to learn more about:", df["University"].unique())
     uni_data = df[df["University"] == selected_uni].iloc[0]
 
-    st.markdown("#### 🧭 Basic Information")
+    st.markdown("#### 🧭 Mission Statement")
     st.write(uni_data["Mission"])
 
     st.image(campus_images[selected_uni], caption="📍 Campus View", use_column_width=True)
 
     st.markdown(f"#### 🎓 {uni_data['University']}")
-  
+
     # Website links dictionary
     university_links = {
         "University of Notre Dame": "https://www.nd.edu",
@@ -167,9 +188,9 @@ elif mode == "Learn More About Each One":
     if selected_uni == "University of Notre Dame":
         st.markdown("#### 💬 Personal Note from the Creator")
         st.success(
-        "I am a current junior here, and would not imagine being anywhere else. "
-        "This app is just a preview of the basic information — there is so much more to this place. "
-        "There’s truly no place like it.\n\n"
-        "**If you have any questions about the application process, please feel free to reach out.**\n\n"
-        "**GO IRISH! ☘️**"
-    )
+            "I am a current junior here, and would not imagine being anywhere else. "
+            "This app is just a preview of the basic information — there is so much more to this place. "
+            "There’s truly no place like it.\n\n"
+            "**If you have any questions about the application process, please feel free to reach out.**\n\n"
+            "**GO IRISH! ☘️**"
+        )
